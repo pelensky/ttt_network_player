@@ -1,2 +1,5 @@
 language: clojure
 script: lein spec
+
+after_script:
+  - bash -ex spec/coveralls.sh
