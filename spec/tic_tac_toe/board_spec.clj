@@ -5,4 +5,8 @@
 (describe "Board"
   (it "X can play"
     (should= [1]
-      (take-turn 1))))
+      (take-turn [] 1)))
+
+  (it "X can play in any spot"
+    (should= [0]
+      (take-turn [] 0))))
