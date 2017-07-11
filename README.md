@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/pelensky/clojure_ttt.svg?branch=master)](https://travis-ci.org/pelensky/clojure_ttt)
 # Clojure Tic Tac Toe
 
 This is a simple Tic Tac Toe game built in Clojure.
