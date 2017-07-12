@@ -1,4 +1,4 @@
-(ns tic-tac-toe.cli
+(ns tic-tac-toe.output
   (:require [tic-tac-toe.board :as ttt-board]))
 
 (defn print-welcome []
@@ -42,10 +42,3 @@
     (println (str "  A | B | C\n"
       (clojure.string/join "------------\n" formatted)))))
 
-(defn print-empty-board [board]
-  (println (str "  A | B | C \n"
-                "1   |   |   \n"
-                "------------\n"
-                "2   |   |   \n"
-                "------------\n"
-                "3   |   |   ")))

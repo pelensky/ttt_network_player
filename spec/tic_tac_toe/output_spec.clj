@@ -1,6 +1,6 @@
-(ns tic-tac-toe.cli-spec
+(ns tic-tac-toe.output-spec
   (:require [speclj.core :refer :all]
-            [tic-tac-toe.cli :refer :all]))
+            [tic-tac-toe.output :refer :all]))
 
 (describe "CLI"
   (it "Welcomes the user"
