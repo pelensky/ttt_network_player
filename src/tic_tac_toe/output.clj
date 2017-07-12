@@ -42,3 +42,5 @@
     (println (str "  A | B | C\n"
       (clojure.string/join "------------\n" formatted)))))
 
+(defn print-game-over []
+  (println "Game Over"))

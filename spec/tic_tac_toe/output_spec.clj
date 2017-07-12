@@ -61,4 +61,8 @@
 
   (it "prints the board - one move"
     (should= "  A | B | C\n1 X |   |  \n------------\n2   |   |  \n------------\n3   |   |  \n\n"
-      (with-out-str (print-board [0])))))
+      (with-out-str (print-board [0]))))
+
+  (it "prints game over"
+    (should= "Game Over\n"
+      (with-out-str (print-game-over)))))
