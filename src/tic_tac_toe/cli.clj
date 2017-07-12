@@ -1,10 +1,13 @@
-(ns tic-tac-toe.cli)
+(ns tic-tac-toe.cli
+  (:require [tic-tac-toe.board :as ttt-board]))
 
 (defn print-welcome []
   (println "Tic Tac Toe"))
 
 (defn convert-board [board]
-  ["X" nil nil nil nil nil nil nil nil])
+  (vec
+    (for [space (range 9)]
+      (ttt-board/check-space space board))))
 
 (defn print-board [board]
   (println (str "  A | B | C \n"

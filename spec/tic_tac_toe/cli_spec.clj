@@ -23,11 +23,11 @@
     (should= "  A | B | C \n1 X |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
       (with-out-str (print-board [0]))))
 
-  (xit "creates a vector with the moves - one move"
+  (it "creates a vector with the moves - one move"
     (should= ["X" nil nil nil nil nil nil nil nil]
       (convert-board [0])))
 
-  (xit "creates a vector with the moves - multiple moves"
+  (it "creates a vector with the moves - multiple moves"
     (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
       (convert-board [0 4 1 2 6 3 5]))))
 
