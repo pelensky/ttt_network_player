@@ -3,12 +3,16 @@
 (defn print-welcome []
   (println "Tic Tac Toe"))
 
-(defn print-board []
-  (println (str " A1  | A2  | A3  \n"
-                "-----------------\n"
-                " B1  | B2  | B3  \n"
-                "-----------------\n"
-                " C1  | C2  | C3  ")))
+(defn convert-board [board]
+  ["X" nil nil nil nil nil nil nil nil])
+
+(defn print-board [board]
+  (println (str "  A | B | C \n"
+                "1   |   |   \n"
+                "------------\n"
+                "2   |   |   \n"
+                "------------\n"
+                "3   |   |   ")))
 
 (defn print-take-turn [board]
   (println (str (if-let [player (even? (count board))]
