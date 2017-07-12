@@ -12,14 +12,15 @@
   (ttt-output/print-take-turn board)
   (ttt-output/print-board board)
   (let [updated-board (ttt-board/take-turn (ttt-input/selection) board)]
-    (if (>= 9 (count board))
-      (end-of-game)
+    (if (<= 9 (count updated-board))
+      (end-of-game updated-board)
       (recur updated-board))))
 
 (defn single-turn [board]
   (ttt-board/take-turn (ttt-input/selection) board))
 
-(defn end-of-game []
+(defn end-of-game [board]
+  (ttt-output/print-board board)
   (ttt-output/print-game-over))
 
 (defn play []
