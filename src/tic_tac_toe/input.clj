@@ -1,4 +1,7 @@
 (ns tic-tac-toe.input)
 
-(defn selection []
+(defn get-input []
   (read-line))
+
+(defn selection []
+  (Integer/valueOf (read-line)))

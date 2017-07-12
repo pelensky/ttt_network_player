@@ -7,4 +7,9 @@
   (it "gets user input"
     (should= "1"
       (with-in-str "1"
+        (get-input))))
+
+  (it "convers string to an integer"
+    (should= 1
+      (with-in-str "1"
         (selection)))))
