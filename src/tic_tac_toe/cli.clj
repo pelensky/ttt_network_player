@@ -32,10 +32,15 @@
 (defn format-row [number row]
   (str number " " (clojure.string/join " | " row) "\n"))
 
-(defn print-board [board]
+(defn format-rows [board]
   (let [split (map-indexed vector (split-board board))]
     (for [row split]
-      (str (format-row (inc (get row 0)) (get row 1))))))
+      (format-row (inc (get row 0)) (get row 1)))))
+
+(defn print-board [board]
+  (let [formatted (format-rows board)]
+    (println (str "  A | B | C\n"
+      (clojure.string/join "------------\n" formatted)))))
 
 (defn print-empty-board [board]
   (println (str "  A | B | C \n"

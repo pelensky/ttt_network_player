@@ -51,10 +51,14 @@
     (should= "1   | X | O\n"
       (format-row 1 [" " "X" "O"])))
 
-  (xit "prints the board - empty"
-    (should= "  A | B | C \n1   |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
-      (print-board [])))
+  (it "formats the rows with the number"
+    (should= ["1   |   |  \n" "2   |   |  \n" "3   |   |  \n"]
+      (format-rows [])))
 
-  (xit "prints the board - one move"
-    (should= "  A | B | C \n1 X |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
+  (it "prints the board - empty"
+    (should= "  A | B | C\n1   |   |  \n------------\n2   |   |  \n------------\n3   |   |  \n\n"
+      (with-out-str (print-board []))))
+
+  (it "prints the board - one move"
+    (should= "  A | B | C\n1 X |   |  \n------------\n2   |   |  \n------------\n3   |   |  \n\n"
       (with-out-str (print-board [0])))))
