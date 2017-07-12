@@ -23,15 +23,38 @@
     (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
       (convert-board [0 4 1 2 6 3 5])))
 
+  (it "changes nil values to spaces"
+    (should= " "
+      (update-space nil)))
+
+  (it "doesn't change non-nil values"
+    (should= "X"
+      (update-space "X")))
+
+  (it "creates a vector with spaces rather than nil values"
+    (should= ["X" "X" "O" "O" "O" "X" "X" " " " "]
+      (formatted-board-vector [0 4 1 2 6 3 5])))
+
+  (it "creates a vector with spaces - no moves"
+    (should= [" " " " " " " " " " " " " " " " " "]
+      (formatted-board-vector [])))
+
   (it "splits the vector into three"
-    (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
+    (should= [["X" "X" "O"] ["O" "O" "X"] ["X" " " " "]]
       (split-board [0 4 1 2 6 3 5])))
 
-  (it "prints the board - empty"
+  (it "splits an empty board"
+    (should= [[" " " " " "] [" " " " " "] [" " " " " "]]
+      (split-board [])))
+
+  (it "formats a single row"
+    (should= "1   | X | O\n"
+      (format-row 1 [" " "X" "O"])))
+
+  (xit "prints the board - empty"
     (should= "  A | B | C \n1   |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
-      (with-out-str (print-board []))))
+      (print-board [])))
 
   (xit "prints the board - one move"
     (should= "  A | B | C \n1 X |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
       (with-out-str (print-board [0])))))
-
