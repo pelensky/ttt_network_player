@@ -6,9 +6,7 @@
 
 (defn print-take-turn [board]
   (println
-    (str
-      (if (even? (count board))
-        "X" "O") ", take your turn")))
+    (str (if (even? (count board)) "X" "O") ", take your turn")))
 
 (defn convert-board [board]
   (vec

@@ -17,4 +17,9 @@
   (it "Plays the game until the board is full"
     (should-contain "Game Over\n"
       (with-out-str (with-in-str "0\n4\n1\n2\n6\n3\n5\n7\n8"
-        (play))))))
+        (play)))))
+
+  (it "single turn returns the board"
+    (should= [1]
+      (with-in-str "1"
+      (single-turn [])))))
