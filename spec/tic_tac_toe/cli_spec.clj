@@ -15,19 +15,23 @@
     (should= "O, take your turn\n"
       (with-out-str (print-take-turn [0] ))))
 
-  (it "prints the board - empty"
-    (should= "  A | B | C \n1   |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
-      (with-out-str (print-board []))))
-
-  (xit "prints the board - one move"
-    (should= "  A | B | C \n1 X |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
-      (with-out-str (print-board [0]))))
-
   (it "creates a vector with the moves - one move"
     (should= ["X" nil nil nil nil nil nil nil nil]
       (convert-board [0])))
 
   (it "creates a vector with the moves - multiple moves"
     (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
-      (convert-board [0 4 1 2 6 3 5]))))
+      (convert-board [0 4 1 2 6 3 5])))
+
+  (it "splits the vector into three"
+    (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
+      (split-board [0 4 1 2 6 3 5])))
+
+  (it "prints the board - empty"
+    (should= "  A | B | C \n1   |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
+      (with-out-str (print-board []))))
+
+  (xit "prints the board - one move"
+    (should= "  A | B | C \n1 X |   |   \n------------\n2   |   |   \n------------\n3   |   |   \n"
+      (with-out-str (print-board [0])))))
 
