@@ -2,3 +2,6 @@
   (:require [tic-tac-toe.board :as ttt-board]
             [tic-tac-toe.input :as ttt-input]
             [tic-tac-toe.output :as ttt-output]))
+
+(defn play []
+  (println "Game Over"))
