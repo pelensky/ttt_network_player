@@ -2,7 +2,7 @@
   (:require [speclj.core :refer :all]
             [tic-tac-toe.output :refer :all]))
 
-(describe "CLI"
+(describe "Output"
   (it "Welcomes the user"
     (should= "Tic Tac Toe\n"
       (with-out-str (print-welcome))))
