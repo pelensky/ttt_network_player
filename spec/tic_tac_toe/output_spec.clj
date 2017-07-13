@@ -3,35 +3,35 @@
             [tic-tac-toe.output :refer :all]))
 
 (describe "Output"
-  (it "Welcomes the user"
+  (it "Welcomes user"
     (should= "Tic Tac Toe\n"
       (with-out-str (print-welcome))))
 
-  (it "prompts X to take their turn first"
+  (it "prompts X to take turn"
     (should= "X, take your turn\n"
       (with-out-str (print-take-turn [] ))))
 
-  (it "prompts O to take their turn if X has played"
+  (it "prompts O to take their turn"
     (should= "O, take your turn\n"
       (with-out-str (print-take-turn [0] ))))
 
-  (it "creates a vector with the moves - one move"
+  (it "creates a vector with moves - one"
     (should= ["X" nil nil nil nil nil nil nil nil]
       (convert-board [0])))
 
-  (it "creates a vector with the moves - multiple moves"
+  (it "creates a vector with moves - multiple"
     (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
       (convert-board [0 4 1 2 6 3 5])))
 
-  (it "changes nil values to spaces"
+  (it "changes nil to space"
     (should= " "
       (update-space nil)))
 
-  (it "doesn't change non-nil values"
+  (it "doesn't change non-nil"
     (should= "X"
       (update-space "X")))
 
-  (it "creates a vector with spaces rather than nil values"
+  (it "creates a vector with spaces rather than nil"
     (should= ["X" "X" "O" "O" "O" "X" "X" " " " "]
       (formatted-board-vector [0 4 1 2 6 3 5])))
 
@@ -43,15 +43,15 @@
     (should= [["X" "X" "O"] ["O" "O" "X"] ["X" " " " "]]
       (split-board [0 4 1 2 6 3 5])))
 
-  (it "splits an empty board"
+  (it "splits an empty board into three"
     (should= [[" " " " " "] [" " " " " "] [" " " " " "]]
       (split-board [])))
 
-  (it "formats a single row"
+  (it "formats a row"
     (should= "1   | X | O\n"
       (format-row 1 [" " "X" "O"])))
 
-  (it "formats the rows with the number"
+  (it "formats the rows with the row number"
     (should= ["1   |   |  \n" "2   |   |  \n" "3   |   |  \n"]
       (format-rows [])))
 

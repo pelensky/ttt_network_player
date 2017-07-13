@@ -4,12 +4,12 @@
 
 (describe "Input"
 
-  (it "gets user input"
+  (it "gets input"
     (should= "1"
       (with-in-str "1"
         (get-input))))
 
-  (it "convers string to an integer"
+  (it "convers input to integer"
     (should= 1
       (with-in-str "1"
         (selection)))))
