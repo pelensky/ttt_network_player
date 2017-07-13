@@ -3,7 +3,7 @@
 (defn take-turn [space board]
   (conj board space))
 
-(defn check-space [space board]
+(defn check-value-of-space [space board]
   (cond
     (not(.contains board space)) nil
     (even? (.indexOf board space)) "X"

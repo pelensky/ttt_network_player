@@ -17,12 +17,12 @@
 
   (it "can check an empty space"
     (should= nil
-      (check-space 0 [])))
+      (check-value-of-space 0 [])))
 
   (it "can check a taken space"
     (should= "X"
-      (check-space 0 [0])))
+      (check-value-of-space 0 [0])))
 
   (it "can check a space taken by O"
     (should= "O"
-      (check-space 5 [0 5]))))
+      (check-value-of-space 5 [0 5]))))

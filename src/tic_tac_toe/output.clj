@@ -11,7 +11,7 @@
 (defn convert-board [board]
   (vec
     (for [space (range 9)]
-      (ttt-board/check-space space board))))
+      (ttt-board/check-value-of-space space board))))
 
 (defn update-space [value]
   (if (nil? value)
