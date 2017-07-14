@@ -19,10 +19,15 @@
 (defn split-board-into-rows [full-board]
   (vec (partition 3 full-board)))
 
+(defn- split-board-into-columns [rows]
+  (apply mapv vector rows))
+
 (defn winning-scenarios [board]
   (let [winning-lines (vector)]
     (let [full-board (convert-board board)]
-      (conj winning-lines (split-board-into-rows full-board)
-        winning-lines))))
+      (let [rows (split-board-into-rows full-board)]
+        (conj winning-lines rows
+          (split-board-into-columns rows)
+          winning-lines)))))
 
 

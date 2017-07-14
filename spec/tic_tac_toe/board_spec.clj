@@ -54,4 +54,8 @@
 
   (it "gets the rows - some moves"
     (should-contain [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
+      (winning-scenarios [0 4 1 2 6 3 5])))
+
+  (it "gets the rows"
+    (should-contain [["X" "O" "X"] ["X" "O" nil] ["O" "X" nil]]
       (winning-scenarios [0 4 1 2 6 3 5]))))
