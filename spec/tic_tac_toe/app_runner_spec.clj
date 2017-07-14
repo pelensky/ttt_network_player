@@ -20,6 +20,6 @@
         (play)))))
 
   (it "single turn returns board"
-    (should= [1]
+    (should= [3]
       (with-in-str "A2"
       (single-turn [])))))

@@ -25,16 +25,16 @@
         (selection))))
 
   (it "strips white space from end"
-    (should= 6
+    (should= 2
       (with-in-str "c1 "
         (selection))))
 
   (it "strips white space from start"
-    (should= 1
+    (should= 3
       (with-in-str " A2"
         (selection))))
 
   (it "does not allow nil as a value"
-    (should= 5
+    (should= 7
       (with-in-str "dan \nb3"
         (selection)))))
