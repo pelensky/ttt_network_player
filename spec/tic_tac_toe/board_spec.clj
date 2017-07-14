@@ -38,14 +38,20 @@
 
   (it "creates a vector with moves - multiple"
     (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
-      (convert-board [0 4 1 2 6 3 5]))))
+      (convert-board [0 4 1 2 6 3 5])))
 
-(it "splits the vector into three"
+  (it "splits the vector into three"
     (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
-      (split-board-into-rows ["X" "X" "O" "O" "O" "X" "X" nil nil]))
+      (split-board-into-rows ["X" "X" "O" "O" "O" "X" "X" nil nil])))
 
   (it "splits an empty board into three"
     (should= [[nil nil nil] [nil nil nil] [nil nil nil]]
-      (split-board-into-rows [nil nil nil nil nil nil nil nil nil]))))
+      (split-board-into-rows [nil nil nil nil nil nil nil nil nil])))
 
+  (it "gets the rows - no moves"
+    (should-contain [[nil nil nil] [nil nil nil] [nil nil nil]]
+      (winning-scenarios [])))
 
+  (it "gets the rows - some moves"
+    (should-contain [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
+      (winning-scenarios [0 4 1 2 6 3 5]))))
