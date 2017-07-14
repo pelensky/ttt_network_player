@@ -42,10 +42,10 @@
 
 (it "splits the vector into three"
     (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
-      (split-board ["X" "X" "O" "O" "O" "X" "X" nil nil]))
+      (split-board-into-rows ["X" "X" "O" "O" "O" "X" "X" nil nil]))
 
   (it "splits an empty board into three"
     (should= [[nil nil nil] [nil nil nil] [nil nil nil]]
-      (split-board [nil nil nil nil nil nil nil nil nil]))))
+      (split-board-into-rows [nil nil nil nil nil nil nil nil nil]))))
 
 

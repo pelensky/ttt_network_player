@@ -22,7 +22,7 @@
   (str number " " (clojure.string/join " | " row) "\n"))
 
 (defn- format-rows [board]
-  (let [split (map-indexed vector (ttt-board/split-board (replace-nil-values-with-spaces board)))]
+  (let [split (map-indexed vector (ttt-board/split-board-into-rows (replace-nil-values-with-spaces board)))]
     (for [row split]
       (format-row (inc (get row 0)) (get row 1)))))
 

@@ -16,7 +16,7 @@
     (for [space (range 9)]
       (check-value-of-space space board))))
 
-(defn split-board [full-board]
+(defn split-board-into-rows [full-board]
   (vec (partition 3 full-board)))
 
 
