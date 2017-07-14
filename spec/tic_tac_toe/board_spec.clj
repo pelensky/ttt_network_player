@@ -25,4 +25,8 @@
 
   (it "check value of a space taken by O"
     (should= "O"
-      (check-value-of-space 5 [0 5]))))
+      (check-value-of-space 5 [0 5])))
+
+  (it "rejects duplicate values"
+    (should= [0 1 2]
+      (take-turn 0 [0 1 2]))))

@@ -1,7 +1,9 @@
 (ns tic-tac-toe.board)
 
 (defn take-turn [space board]
-  (conj board space))
+  (if (not (.contains board space))
+    (conj board space)
+    board))
 
 (defn check-value-of-space [space board]
   (cond
