@@ -18,15 +18,11 @@
     (for [space full-board]
       (update-space space))))
 
-(defn- split-board [board]
-  (let [full-board (replace-nil-values-with-spaces board)]
-    (vec (partition 3 full-board))))
-
 (defn- format-row [number row]
   (str number " " (clojure.string/join " | " row) "\n"))
 
 (defn- format-rows [board]
-  (let [split (map-indexed vector (split-board board))]
+  (let [split (map-indexed vector (ttt-board/split-board (replace-nil-values-with-spaces board)))]
     (for [row split]
       (format-row (inc (get row 0)) (get row 1)))))
 
