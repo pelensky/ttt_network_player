@@ -8,18 +8,13 @@
   (println
     (str (if (even? (count board)) "X" "O") ", take your turn")))
 
-(defn- convert-board [board]
-  (vec
-    (for [space (range 9)]
-      (ttt-board/check-value-of-space space board))))
-
 (defn- update-space [value]
   (if (nil? value)
     " "
     value))
 
 (defn- replace-nil-values-with-spaces [board]
-  (let [full-board (convert-board board)]
+  (let [full-board (ttt-board/convert-board board)]
     (for [space full-board]
       (update-space space))))
 

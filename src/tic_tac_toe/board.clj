@@ -10,3 +10,10 @@
     (not(.contains board space)) nil
     (even? (.indexOf board space)) "X"
     (odd?  (.indexOf board space)) "O"))
+
+(defn convert-board [board]
+  (vec
+    (for [space (range 9)]
+      (check-value-of-space space board))))
+
+

@@ -2,7 +2,7 @@
   (:require [speclj.core :refer :all]
             [tic-tac-toe.board :refer :all]))
 
-(describe "Board"
+(describe "Taking turns"
   (it "X plays"
     (should= [1]
       (take-turn 1 [])))
@@ -30,3 +30,12 @@
   (it "rejects duplicate values"
     (should= [0 1 2]
       (take-turn 0 [0 1 2]))))
+
+(describe "End of game"
+  (it "creates a vector with moves - one"
+    (should= ["X" nil nil nil nil nil nil nil nil]
+      (convert-board [0])))
+
+  (it "creates a vector with moves - multiple"
+    (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
+      (convert-board [0 4 1 2 6 3 5]))))
