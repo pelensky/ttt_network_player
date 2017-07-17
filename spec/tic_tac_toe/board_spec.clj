@@ -48,22 +48,36 @@
     (should= [[nil nil nil] [nil nil nil] [nil nil nil]]
       (split-board-into-rows [nil nil nil nil nil nil nil nil nil])))
 
-  (it "gets the rows - no moves"
-    (should-contain [[nil nil nil] [nil nil nil] [nil nil nil]]
-      (winning-scenarios [])))
-
-  (it "gets the rows - some moves"
-    (should-contain [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
+  (it "gets row 1"
+    (should-contain ["X" "X" "O"]
       (winning-scenarios [0 4 1 2 6 3 5])))
 
-  (it "gets the rows"
-    (should-contain [["X" "O" "X"] ["X" "O" nil] ["O" "X" nil]]
+  (it "gets row 2"
+    (should-contain ["O" "O" "X"]
+      (winning-scenarios [0 4 1 2 6 3 5])))
+
+  (it "gets row 3"
+    (should-contain ["X" nil nil]
+      (winning-scenarios [0 4 1 2 6 3 5])))
+
+  (it "gets column 1"
+    (should-contain ["X" "O" "X"]
+      (winning-scenarios [0 4 1 2 6 3 5])))
+
+  (it "gets column 2"
+    (should-contain ["X" "O" nil]
+      (winning-scenarios [0 4 1 2 6 3 5])))
+
+  (it "gets column 3"
+    (should-contain ["O" "X" nil]
       (winning-scenarios [0 4 1 2 6 3 5])))
 
   (it "gets the left diagonal"
     (should-contain ["X" "O" nil]
       (winning-scenarios [0 4 1 2 6 3 5])))
 
-  (it "tests the left diagonal"
-    (should= ["O", "X", nil]
-      (split-left-diagonal [["O", nil nil],[nil,"X",nil],[nil,nil,nil]] [] 0))))
+  (it "gets the right diagonal"
+    (should-contain ["O" "O" "X"]
+      (winning-scenarios [0 4 1 2 6 3 5]))))
+
+
