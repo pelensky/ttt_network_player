@@ -56,3 +56,6 @@
      (for [line (winning-scenarios board)]
       (line-won-by? marker line)))))
 
+(defn game-tied? [board]
+  (and (= 9 (count board)) (not (game-won-by? "X" board)) (not (game-won-by? "O" board))))
+

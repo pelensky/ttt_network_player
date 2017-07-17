@@ -109,11 +109,35 @@
     (should= false
       (game-won-by? "X" [0 2 3 4 1 6])))
 
+  (it "no winner 1"
+    (should= false
+      (game-won-by? "X" [0 1 2 3 4 6 7 8 5])))
+
+  (it "no winner 2"
+    (should= false
+      (game-won-by? "O" [0 1 2 3 4 6 7 8 5])))
+
   (it "checks all elements in a vector equal what it is checking"
     (should= true
       (line-won-by? "X" ["X" "X" "X"])))
 
   (it "is false if they are not equal"
     (should= false
-      (line-won-by? "O" [nil "X" "O"]))))
+      (line-won-by? "O" [nil "X" "O"])))
+
+  (it "is tied when the board is full and nobody has won"
+    (should= true
+      (game-tied? [0 1 2 3 4 6 7 8 5])))
+
+  (it "is not tied when the board is full but the game is won by X"
+    (should= false
+      (game-tied? [0 1 2 3 4 5 7 8 6])))
+
+  (it "is not tied when the board is full but the game is won by X"
+    (should= false
+      (game-tied? [0 1 2 4 3 6 5 7])))
+
+  (it "isn't tied when the board has no moves"
+    (should= false
+      (game-tied? []))))
 
