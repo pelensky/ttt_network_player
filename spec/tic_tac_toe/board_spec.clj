@@ -58,4 +58,12 @@
 
   (it "gets the rows"
     (should-contain [["X" "O" "X"] ["X" "O" nil] ["O" "X" nil]]
-      (winning-scenarios [0 4 1 2 6 3 5]))))
+      (winning-scenarios [0 4 1 2 6 3 5])))
+
+  (it "gets the left diagonal"
+    (should-contain ["X" "O" nil]
+      (winning-scenarios [0 4 1 2 6 3 5])))
+
+  (it "tests the left diagonal"
+    (should= ["O", "X", nil]
+      (split-left-diagonal [["O", nil nil],[nil,"X",nil],[nil,nil,nil]] [] 0))))

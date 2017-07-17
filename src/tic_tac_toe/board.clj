@@ -17,17 +17,23 @@
       (check-value-of-space space board))))
 
 (defn split-board-into-rows [full-board]
-  (vec (partition 3 full-board)))
+  (vec
+    ( for [row (partition 3 full-board)]
+      (vec row))))
 
 (defn- split-board-into-columns [rows]
   (apply mapv vector rows))
 
+(defn split-left-diagonal [rows accumulator current-index]
+  (if (>= current-index (count rows))
+    accumulator
+    (recur rows
+      (conj accumulator (get ( get rows current-index) current-index))
+      (inc current-index))))
+
 (defn winning-scenarios [board]
-  (let [winning-lines (vector)]
     (let [full-board (convert-board board)]
       (let [rows (split-board-into-rows full-board)]
-        (conj winning-lines rows
-          (split-board-into-columns rows)
-          winning-lines)))))
-
-
+        (let [columns (split-board-into-columns rows)]
+          (let [left-diagonal (split-left-diagonal rows [] 0)]
+            (conj [] rows columns left-diagonal))))))
