@@ -51,5 +51,8 @@
   (every? (partial = marker) line))
 
 (defn game-won-by? [marker board]
-  true)
+  (some?
+    (some true?
+     (for [line (winning-scenarios board)]
+      (line-won-by? marker line)))))
 

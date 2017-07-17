@@ -97,6 +97,18 @@
     (should= true
       (game-won-by? "O" [0 2 3 4 1 6])))
 
+  (it "is not won when there are no moves"
+    (should= false
+      (game-won-by? "X" [])))
+
+  (it "is not won when the game is tied"
+    (should= false
+      (game-won-by? "O" [0 1 2 3 4 6 5 7 8])))
+
+  (it "is not won when the game is won by the other player"
+    (should= false
+      (game-won-by? "X" [0 2 3 4 1 6])))
+
   (it "checks all elements in a vector equal what it is checking"
     (should= true
       (line-won-by? "X" ["X" "X" "X"])))
