@@ -59,3 +59,5 @@
 (defn game-tied? [board]
   (and (= 9 (count board)) (not (game-won-by? "X" board)) (not (game-won-by? "O" board))))
 
+(defn game-over? [board]
+  (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))

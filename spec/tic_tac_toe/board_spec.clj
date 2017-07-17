@@ -139,5 +139,21 @@
 
   (it "isn't tied when the board has no moves"
     (should= false
-      (game-tied? []))))
+      (game-tied? [])))
+
+  (it "is over when the game is won by X"
+    (should= true
+      (game-over? [0 6 1 7 2])))
+
+  (it "is not over when there has been no moves"
+    (should= false
+      (game-over? [])))
+
+  (it "is over when the game is won by O"
+    (should= true
+      (game-over? [0 4 3 1 2 7])))
+
+  (it "is over when the game is tied"
+    (should= true
+      (game-over? [0 1 2 3 4 6 5 8 7]))))
 
