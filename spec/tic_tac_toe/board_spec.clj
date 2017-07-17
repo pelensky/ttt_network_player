@@ -31,7 +31,7 @@
     (should= [0 1 2]
       (take-turn 0 [0 1 2]))))
 
-(describe "End of game"
+(describe "Split Board"
   (it "creates a vector with moves - one"
     (should= ["X" nil nil nil nil nil nil nil nil]
       (convert-board [0])))
@@ -80,4 +80,28 @@
     (should-contain ["O" "O" "X"]
       (winning-scenarios [0 4 1 2 6 3 5]))))
 
+(describe "End of game"
+   (it "is over when there is a win in a row"
+    (should= true
+      (game-won-by? "X" [0 6 1 7 2])))
+
+  (it "is over when there is a win in a column"
+    (should= true
+      (game-won-by? "O" [0 4 3 1 2 7])))
+
+  (it "is over when there is a win in the left diagonal"
+    (should= true
+      (game-won-by? "X" [0 1 4 3 8])))
+
+  (it "is over when there is a win in the right diagonal"
+    (should= true
+      (game-won-by? "O" [0 2 3 4 1 6])))
+
+  (it "checks all elements in a vector equal what it is checking"
+    (should= true
+      (line-won-by? "X" ["X" "X" "X"])))
+
+  (it "is false if they are not equal"
+    (should= false
+      (line-won-by? "O" [nil "X" "O"]))))
 

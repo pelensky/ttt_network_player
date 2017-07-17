@@ -46,3 +46,10 @@
           (let [left-diagonal (split-left-diagonal rows [] 0)]
             (let [right-diagonal (split-right-diagonal rows [] 0 (- (count rows) 1))]
               (into [] (concat rows columns left-diagonal right-diagonal))))))))
+
+(defn line-won-by? [marker line]
+  (every? (partial = marker) line))
+
+(defn game-won-by? [marker board]
+  true)
+
