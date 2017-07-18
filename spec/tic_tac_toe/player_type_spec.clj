@@ -7,3 +7,7 @@
   (it "selects a player type for X"
     (should= :human
       (select-player 1))))
+
+  (it "puts the two players into a vector"
+    (should= [:human :human]
+      (select-players :human :human)))
