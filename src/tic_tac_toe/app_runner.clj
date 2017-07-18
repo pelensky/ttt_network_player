@@ -19,5 +19,5 @@
       (recur updated-board))))
 
 (defn play []
-  (ttt-output/print-welcome)
+  (ttt-output/print-message (ttt-output/welcome))
   (game-runner []))

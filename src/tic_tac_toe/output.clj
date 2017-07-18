@@ -1,8 +1,8 @@
 (ns tic-tac-toe.output
   (:require [tic-tac-toe.board :as ttt-board]))
 
-(defn print-welcome []
-  (println "Tic Tac Toe"))
+(defn welcome []
+  "Tic Tac Toe")
 
 (defn print-take-turn [board]
   (println
@@ -43,3 +43,6 @@
     (if (ttt-board/game-tied? board)
       (print-tied-game)
       (print-won-game board)))
+
+(defn print-message [message]
+  (println message))

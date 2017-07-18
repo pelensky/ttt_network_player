@@ -5,7 +5,7 @@
 (describe "Output"
   (it "Welcomes user"
     (should-contain "Tic Tac Toe"
-      (with-out-str (print-welcome))))
+      (with-out-str (print-message (welcome)))))
 
   (it "prompts X to take turn"
     (should-contain "X, take your turn"
