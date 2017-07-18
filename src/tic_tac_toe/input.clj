@@ -7,9 +7,6 @@
     "A2" 3 "B2" 4 "C2" 5
     "A3" 6 "B3" 7 "C3" 8})
 
-(defn get-input []
-  (read-line))
-
 (defn space-selection []
   (let [converted-selection
     (get conversions

@@ -4,11 +4,6 @@
 
 (describe "Input"
 
-  (it "gets input"
-    (should= "A1"
-      (with-in-str "A1"
-        (get-input))))
-
   (it "gets one or two"
     (should= 1
       (with-in-str "1"
