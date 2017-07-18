@@ -10,7 +10,7 @@
 (defn get-input []
   (read-line))
 
-(defn selection []
+(defn space-selection []
   (let [converted-selection
     (get conversions
       (string/upper-case
@@ -19,3 +19,10 @@
            (if (not (nil? converted-selection))
             converted-selection
             (recur))))
+
+(defn get-player []
+  (let [selection (Integer/parseInt (read-line))]
+    (if (or (= selection 1) (= selection 2))
+      selection
+      (recur))))
+
