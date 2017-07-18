@@ -11,10 +11,11 @@
   (read-line))
 
 (defn selection []
-  (let [converted-selection (get conversions
-    (string/upper-case
-      (string/trim
-        (read-line))))]
-          (if (not (nil? converted-selection))
+  (let [converted-selection
+    (get conversions
+      (string/upper-case
+        (string/trim
+          (read-line))))]
+           (if (not (nil? converted-selection))
             converted-selection
             (recur))))
