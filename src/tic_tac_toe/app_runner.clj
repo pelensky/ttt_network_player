@@ -14,7 +14,9 @@
   (output/print-message (output/game-over board)))
 
 (defn single-turn [board players]
-  (ttt-board/take-turn (input/space-selection) board))
+  (let [player (current-player board players)]
+    (if (= player :human)
+      (ttt-board/take-turn (input/space-selection) board))))
 
 (defn game-runner [board players]
   (output/print-message (output/take-turn board))
