@@ -7,6 +7,14 @@
     (should-contain "Tic Tac Toe"
       (with-out-str (print-message (welcome)))))
 
+  (it "asks for player type for X"
+    (should-contain "Select player type for X\n1) Human"
+      (with-out-str(print-message (player-type "X")))))
+
+  (it "asks for player type for O"
+    (should-contain "O"
+      (with-out-str(print-message (player-type "O")))))
+
   (it "prompts X to take turn"
     (should-contain "X, take your turn"
       (with-out-str (print-message (take-turn [])))))

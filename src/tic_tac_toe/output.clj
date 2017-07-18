@@ -43,5 +43,8 @@
       (tied-game)
       (won-game board))))
 
+(defn player-type [marker]
+  (str "Select player type for " marker "\n" "1) Human"))
+
 (defn print-message [message]
   (println message))
