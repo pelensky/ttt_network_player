@@ -33,8 +33,8 @@
 
   (it "prints X wins"
     (should-contain "X is the winner"
-      (with-out-str (print-won-game [0 6 1 7 2]))))
+      (with-out-str (print-game-over [0 6 1 7 2]))))
 
   (it "prints O wins"
     (should-contain "O is the winner"
-      (with-out-str (print-won-game [0 4 3 1 2 7])))))
+      (with-out-str (print-game-over [0 4 3 1 2 7])))))
