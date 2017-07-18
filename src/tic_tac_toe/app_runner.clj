@@ -1,6 +1,7 @@
 (ns tic-tac-toe.app-runner
   (:require [tic-tac-toe.board :as ttt-board]
             [tic-tac-toe.player-type :as player-type]
+            [tic-tac-toe.human :as human]
             [tic-tac-toe.input :as input]
             [tic-tac-toe.output :as output]))
 
@@ -16,7 +17,7 @@
 (defn single-turn [board players]
   (let [player (current-player board players)]
     (if (= player :human)
-      (ttt-board/take-turn (input/space-selection) board))))
+      (ttt-board/take-turn (human/choose-space) board))))
 
 (defn game-runner [board players]
   (output/print-message (output/take-turn board))
