@@ -25,7 +25,7 @@
     (for [row split]
       (format-row (inc (get row 0)) (get row 1)))))
 
-(defn print-board [board]
+(defn format-board [board]
   (let [formatted (format-rows board)]
     (println (str "  A | B | C\n"
       (clojure.string/join "------------\n" formatted)))))
