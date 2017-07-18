@@ -4,6 +4,11 @@
             [tic-tac-toe.input :as input]
             [tic-tac-toe.output :as output]))
 
+(defn current-player [board players]
+  (if (even? (count board))
+    (get players 0)
+    (get players 1)))
+
 (defn end-of-game [board]
   (output/print-message (output/format-board board))
   (output/print-message (output/game-over board)))

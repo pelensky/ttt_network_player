@@ -37,4 +37,12 @@
   (it "single turn returns board"
     (should= [3]
       (with-in-str "A2"
-      (single-turn [] [])))))
+      (single-turn [] []))))
+
+  (it "finds the current player type"
+    (should= :human
+      (current-player [] [:human :computer])))
+
+  (it "finds a computer player"
+    (should= :computer
+      (current-player [0] [:human :computer]))))
