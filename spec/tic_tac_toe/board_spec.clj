@@ -129,6 +129,10 @@
     (should= true
       (game-tied? [0 1 2 3 4 6 7 8 5])))
 
+  (it "is tied when the board is full"
+    (should= true
+      (game-tied? [0 1 2 3 4 8 5 6 7])))
+
   (it "is not tied when the board is full but the game is won by X"
     (should= false
       (game-tied? [0 1 2 3 4 5 7 8 6])))

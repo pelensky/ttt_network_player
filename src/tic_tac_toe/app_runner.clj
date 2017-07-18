@@ -5,7 +5,7 @@
 
 (defn end-of-game [board]
   (ttt-output/print-board board)
-  (ttt-output/print-game-over))
+  (ttt-output/print-game-over board))
 
 (defn game-runner [board]
   (ttt-output/print-take-turn board)

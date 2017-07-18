@@ -31,9 +31,6 @@
     (println (str "  A | B | C\n"
       (clojure.string/join "------------\n" formatted)))))
 
-(defn print-game-over []
-  (println "Game Over"))
-
 (defn print-tied-game []
   (println "Game Tied"))
 
@@ -41,3 +38,9 @@
   (if (ttt-board/game-won-by? "X" board)
     (println "X is the winner")
     (println "O is the winner")))
+
+(defn print-game-over [board]
+  (println "Game Over")
+    (if (ttt-board/game-tied? board)
+      (print-tied-game)
+      (print-won-game board)))

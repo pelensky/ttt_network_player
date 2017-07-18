@@ -15,9 +15,14 @@
         (play)))))
 
   (it "Plays game until board is full"
-    (should-contain "Game Over\n"
+    (should-contain "Game Over"
       (with-out-str (with-in-str "a1\nb2\na2\na3\nc1\nb1\nb3\nc2\nc3"
         (play)))))
+
+  (it "Plays game until board is full"
+    (should-contain "Game Tied"
+      (with-out-str (with-in-str "a1\nb2\na2\na3\nc1\nb1\nb3\nc2\nc3"
+      (play)))))
 
   (it "single turn returns board"
     (should= [3]

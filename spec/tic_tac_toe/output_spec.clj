@@ -25,11 +25,11 @@
 
   (it "prints game over"
     (should-contain "Game Over"
-      (with-out-str (print-game-over))))
+      (with-out-str (print-game-over [0 6 1 7 2]))))
 
   (it "prints tied game"
     (should-contain "Game Tied"
-      (with-out-str (print-tied-game))))
+      (with-out-str (print-game-over [0 1 2 3 4 8 5 6 7]))))
 
   (it "prints X wins"
     (should-contain "X is the winner"
