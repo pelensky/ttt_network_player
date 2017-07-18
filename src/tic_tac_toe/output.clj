@@ -33,3 +33,11 @@
 
 (defn print-game-over []
   (println "Game Over"))
+
+(defn print-tied-game []
+  (println "Game Tied"))
+
+(defn print-won-game [board]
+  (if (ttt-board/game-won-by? "X" board)
+    (println "X is the winner")
+    (println "O is the winner")))
