@@ -44,7 +44,7 @@
       (won-game board))))
 
 (defn player-type [marker]
-  (str "Select player type for " marker "\n" "1) Human"))
+  (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer"))
 
 (defn print-message [message]
   (println message))

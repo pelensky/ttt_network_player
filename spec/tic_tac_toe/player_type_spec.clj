@@ -13,5 +13,5 @@
       (select-players [] :human))))
 
   (it "puts the second player into the vector"
-    (should= [:human :computer]
-      (select-players [:human] :computer)))
+    (should= [:human :random-computer]
+      (select-players [:human] :random-computer)))
