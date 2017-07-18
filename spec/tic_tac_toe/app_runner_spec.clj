@@ -37,4 +37,4 @@
   (it "single turn returns board"
     (should= [3]
       (with-in-str "A2"
-      (single-turn [])))))
+      (single-turn [] [])))))

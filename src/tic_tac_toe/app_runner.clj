@@ -8,13 +8,13 @@
   (output/print-message (output/format-board board))
   (output/print-message (output/game-over board)))
 
-(defn single-turn [board]
+(defn single-turn [board players]
   (ttt-board/take-turn (input/space-selection) board))
 
 (defn game-runner [board players]
   (output/print-message (output/take-turn board))
   (output/print-message (output/format-board board))
-  (let [updated-board (single-turn board)]
+  (let [updated-board (single-turn board players)]
     (if (ttt-board/game-over? updated-board)
       (end-of-game updated-board)
       (recur updated-board players))))
