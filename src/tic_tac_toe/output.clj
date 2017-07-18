@@ -27,8 +27,8 @@
 
 (defn format-board [board]
   (let [formatted (format-rows board)]
-    (println (str "  A | B | C\n"
-      (clojure.string/join "------------\n" formatted)))))
+    (str "  A | B | C\n"
+      (clojure.string/join "------------\n" formatted))))
 
 (defn- tied-game []
   "Game Tied")
