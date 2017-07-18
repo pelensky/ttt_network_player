@@ -5,13 +5,13 @@
 
 (defn end-of-game [board]
   (ttt-output/print-board board)
-  (ttt-output/print-game-over))
+  (ttt-output/print-game-over board))
 
 (defn game-runner [board]
   (ttt-output/print-take-turn board)
   (ttt-output/print-board board)
   (let [updated-board (ttt-board/take-turn (ttt-input/selection) board)]
-    (if (<= 9 (count updated-board))
+    (if (ttt-board/game-over? updated-board)
       (end-of-game updated-board)
       (recur updated-board))))
 
