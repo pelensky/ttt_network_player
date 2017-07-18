@@ -5,7 +5,7 @@
 
 (defn end-of-game [board]
   (output/print-message (output/format-board board))
-  (output/print-game-over board))
+  (output/print-message (output/game-over board)))
 
 (defn single-turn [board]
   (ttt-board/take-turn (input/selection) board))
