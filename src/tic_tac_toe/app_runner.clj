@@ -11,7 +11,7 @@
   (ttt-board/take-turn (ttt-input/selection) board))
 
 (defn game-runner [board]
-  (ttt-output/print-take-turn board)
+  (ttt-output/print-message (ttt-output/take-turn board))
   (ttt-output/print-board board)
   (let [updated-board (single-turn board)]
     (if (ttt-board/game-over? updated-board)

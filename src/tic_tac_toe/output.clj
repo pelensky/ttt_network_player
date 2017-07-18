@@ -4,9 +4,8 @@
 (defn welcome []
   "Tic Tac Toe")
 
-(defn print-take-turn [board]
-  (println
-    (str (if (even? (count board)) "X" "O") ", take your turn")))
+(defn take-turn [board]
+  (str (if (even? (count board)) "X" "O") ", take your turn"))
 
 (defn- update-space [value]
   (if (nil? value)

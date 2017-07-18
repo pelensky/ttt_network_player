@@ -9,11 +9,11 @@
 
   (it "prompts X to take turn"
     (should-contain "X, take your turn"
-      (with-out-str (print-take-turn []))))
+      (with-out-str (print-message (take-turn [])))))
 
   (it "prompts O to take their turn"
     (should-contain "O, take your turn"
-      (with-out-str (print-take-turn [0]))))
+      (with-out-str (print-message (take-turn [0])))))
 
   (it "prints the board - empty"
     (should-contain "  A | B | C\n1   |   |  \n------------\n2   |   |  \n------------\n3   |   |  \n"
