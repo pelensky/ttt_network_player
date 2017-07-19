@@ -46,5 +46,8 @@
 (defn player-type [marker]
   (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer"))
 
+(defn play-again []
+  "Play again?\n1) Yes\n2) No")
+
 (defn print-message [message]
   (println message))

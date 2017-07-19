@@ -45,4 +45,8 @@
 
   (it "prints O wins"
     (should-contain "O is the winner"
-      (with-out-str (print-message (game-over [0 4 3 1 2 7]))))))
+      (with-out-str (print-message (game-over [0 4 3 1 2 7])))))
+
+  (it "prints new game"
+    (should-contain "Play again?\n1) Yes\n2) No"
+      (with-out-str(print-message (play-again))))))
