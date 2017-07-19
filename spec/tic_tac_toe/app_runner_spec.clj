@@ -45,9 +45,9 @@
 
   (it "finds a computer player"
     (should= :computer
-      (current-player [0] [:human :computer]))))
+      (current-player [0] [:human :computer])))
 
   (it "plays until the game is over when two computers play each other"
     (should-contain "Game Over"
-      (with-out-str (with-in-str "2\n2"
-        (play)))))
+      (with-out-str (with-in-str "2\n2\n2"
+        (play))))))
