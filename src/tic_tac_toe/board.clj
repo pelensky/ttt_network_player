@@ -40,12 +40,12 @@
       (dec current-column-index))))
 
 (defn winning-scenarios [board]
-    (let [full-board (convert-board board)]
-      (let [rows (split-board-into-rows full-board)]
-        (let [columns (split-board-into-columns rows)]
-          (let [left-diagonal (split-left-diagonal rows [] 0)]
-            (let [right-diagonal (split-right-diagonal rows [] 0 (- (count rows) 1))]
-              (into [] (concat rows columns left-diagonal right-diagonal))))))))
+    (let [full-board (convert-board board)
+          rows (split-board-into-rows full-board)
+          columns (split-board-into-columns rows)
+          left-diagonal (split-left-diagonal rows [] 0)
+          right-diagonal (split-right-diagonal rows [] 0 (- (count rows) 1)) ]
+            (into [] (concat rows columns left-diagonal right-diagonal))))
 
 (defn line-won-by? [marker line]
   (every? (partial = marker) line))

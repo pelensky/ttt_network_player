@@ -1,23 +1,41 @@
 (ns tic-tac-toe.app-runner
   (:require [tic-tac-toe.board :as ttt-board]
-            [tic-tac-toe.input :as ttt-input]
-            [tic-tac-toe.output :as ttt-output]))
+            [tic-tac-toe.player-type :as player-type]
+            [tic-tac-toe.human :as human]
+            [tic-tac-toe.random-computer :as random-computer]
+            [tic-tac-toe.input :as input]
+            [tic-tac-toe.output :as output]))
+
+(defn current-player [board players]
+  (if (even? (count board))
+    (get players 0)
+    (get players 1)))
 
 (defn end-of-game [board]
-  (ttt-output/print-board board)
-  (ttt-output/print-game-over board))
+  (output/print-message (output/format-board board))
+  (output/print-message (output/game-over board)))
 
-(defn game-runner [board]
-  (ttt-output/print-take-turn board)
-  (ttt-output/print-board board)
-  (let [updated-board (ttt-board/take-turn (ttt-input/selection) board)]
+(defn single-turn [board players]
+  (let [player (current-player board players)]
+    (if (= player :human)
+      (ttt-board/take-turn (human/choose-space) board)
+      (ttt-board/take-turn (random-computer/choose-space board) board))))
+
+(defn game-runner [board players]
+  (output/print-message (output/take-turn board))
+  (output/print-message (output/format-board board))
+  (let [updated-board (single-turn board players)]
     (if (ttt-board/game-over? updated-board)
       (end-of-game updated-board)
-      (recur updated-board))))
+      (recur updated-board players))))
 
-(defn single-turn [board]
-  (ttt-board/take-turn (ttt-input/selection) board))
+(defn select-players [players]
+  (output/print-message (output/player-type (if (empty? players) "X" "O")))
+  (let [updated-players (player-type/select-players players (player-type/select-player (input/get-player)))]
+    (if (= 2 (count updated-players ))
+      (game-runner [] updated-players)
+      (recur updated-players))))
 
 (defn play []
-  (ttt-output/print-welcome)
-  (game-runner []))
+  (output/print-message (output/welcome))
+  (select-players []))

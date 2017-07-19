@@ -1,12 +1,11 @@
 (ns tic-tac-toe.output
   (:require [tic-tac-toe.board :as ttt-board]))
 
-(defn print-welcome []
-  (println "Tic Tac Toe"))
+(defn welcome []
+  "Tic Tac Toe")
 
-(defn print-take-turn [board]
-  (println
-    (str (if (even? (count board)) "X" "O") ", take your turn")))
+(defn take-turn [board]
+  (str (if (even? (count board)) "X" "O") ", take your turn"))
 
 (defn- update-space [value]
   (if (nil? value)
@@ -26,20 +25,26 @@
     (for [row split]
       (format-row (inc (get row 0)) (get row 1)))))
 
-(defn print-board [board]
+(defn format-board [board]
   (let [formatted (format-rows board)]
-    (println (str "  A | B | C\n"
-      (clojure.string/join "------------\n" formatted)))))
+    (str "  A | B | C\n"
+      (clojure.string/join "------------\n" formatted))))
 
-(defn- print-tied-game []
-  (println "Game Tied"))
+(defn- tied-game []
+  "Game Tied")
 
-(defn- print-won-game [board]
-  (println
-    (str (if (ttt-board/game-won-by? "X" board ) "X" "O") " is the winner")))
+(defn- won-game [board]
+  (str
+    (if (ttt-board/game-won-by? "X" board ) "X" "O") " is the winner"))
 
-(defn print-game-over [board]
-  (println "Game Over")
+(defn game-over [board]
+  (str "Game Over\n"
     (if (ttt-board/game-tied? board)
-      (print-tied-game)
-      (print-won-game board)))
+      (tied-game)
+      (won-game board))))
+
+(defn player-type [marker]
+  (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer"))
+
+(defn print-message [message]
+  (println message))
