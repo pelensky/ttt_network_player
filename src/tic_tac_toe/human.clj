@@ -2,6 +2,6 @@
   (:require [tic-tac-toe.input :as input]))
 
 (defn choose-space []
-  (input/space-selection))
+  (input/select-space))
 
 
