@@ -13,7 +13,7 @@
     value))
 
 (defn- replace-nil-values-with-spaces [board]
-  (let [full-board (ttt-board/convert-board board)]
+  (let [full-board (ttt-board/convert-board-to-full-board board)]
     (for [space full-board]
       (update-space space))))
 

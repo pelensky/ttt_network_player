@@ -11,7 +11,7 @@
     (even? (.indexOf board space)) "X"
     (odd?  (.indexOf board space)) "O"))
 
-(defn convert-board [board]
+(defn convert-board-to-full-board [board]
   (vec
     (for [space (range 9)]
       (check-value-of-space space board))))
@@ -40,7 +40,7 @@
       (dec current-column-index))))
 
 (defn winning-scenarios [board]
-    (let [full-board (convert-board board)
+    (let [full-board (convert-board-to-full-board board)
           rows (split-board-into-rows full-board)
           columns (split-board-into-columns rows)
           left-diagonal (split-left-diagonal rows [] 0)

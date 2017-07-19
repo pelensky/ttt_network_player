@@ -34,11 +34,11 @@
 (describe "Split Board"
   (it "creates a vector with moves - one"
     (should= ["X" nil nil nil nil nil nil nil nil]
-      (convert-board [0])))
+      (convert-board-to-full-board [0])))
 
   (it "creates a vector with moves - multiple"
     (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
-      (convert-board [0 4 1 2 6 3 5])))
+      (convert-board-to-full-board [0 4 1 2 6 3 5])))
 
   (it "splits the vector into three"
     (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
