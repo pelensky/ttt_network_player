@@ -36,8 +36,8 @@
     (conj [] accumulator)
     (recur rows
       (conj accumulator (get (get rows current-row-index) current-column-index))
-      (inc current-row-index)
-      (dec current-column-index))))
+       (inc current-row-index)
+        (dec current-column-index))))
 
 (defn winning-scenarios [board]
     (let [full-board (convert-board-to-full-board board)
