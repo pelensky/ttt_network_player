@@ -22,10 +22,13 @@
       (catch Exception e))
         (recur)))
 
+(defn- valid-selection [selection]
+  (or (= selection 1) (= selection 2)))
+
 (defn get-number []
   (let [selection 
     (validate-integer)]
-      (if (or (= selection 1) (= selection 2))
+      (if (valid-selection selection)
         selection
           (recur))))
 
