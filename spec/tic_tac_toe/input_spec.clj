@@ -7,7 +7,12 @@
   (it "gets one or two"
     (should= 1
       (with-in-str "1"
-        (get-player))))
+        (get-number))))
+
+  (it "does not accept a letter"
+    (should= 1
+      (with-in-str "dan\n1"
+        (get-number))))
 
   (it "converts input to integer"
     (should= 0

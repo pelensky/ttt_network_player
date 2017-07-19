@@ -6,20 +6,40 @@
             [tic-tac-toe.input :as input]
             [tic-tac-toe.output :as output]))
 
+(declare game-runner)
+
 (defn current-player [board players]
   (if (even? (count board))
     (get players 0)
     (get players 1)))
-
-(defn end-of-game [board]
-  (output/print-message (output/format-board board))
-  (output/print-message (output/game-over board)))
 
 (defn single-turn [board players]
   (let [player (current-player board players)]
     (if (= player :human)
       (ttt-board/take-turn (human/choose-space) board)
       (ttt-board/take-turn (random-computer/choose-space board) board))))
+
+(defn select-players [players]
+  (output/print-message (output/player-type (if (empty? players) "X" "O")))
+  (let [updated-players (player-type/select-players players (player-type/select-player (input/get-number)))]
+    (if (= 2 (count updated-players ))
+      (game-runner [] updated-players)
+      (recur updated-players))))
+
+(defn play []
+  (output/print-message (output/welcome))
+  (select-players []))
+
+(defn play-again [selection]
+  (if (= selection 1)
+    (play))
+    (output/print-message (output/exiting)))
+
+(defn end-of-game [board]
+  (output/print-message (output/format-board board))
+  (output/print-message (output/game-over board))
+  (output/print-message (output/play-again))
+  (play-again (input/get-number)))
 
 (defn game-runner [board players]
   (output/print-message (output/take-turn board))
@@ -29,13 +49,3 @@
       (end-of-game updated-board)
       (recur updated-board players))))
 
-(defn select-players [players]
-  (output/print-message (output/player-type (if (empty? players) "X" "O")))
-  (let [updated-players (player-type/select-players players (player-type/select-player (input/get-player)))]
-    (if (= 2 (count updated-players ))
-      (game-runner [] updated-players)
-      (recur updated-players))))
-
-(defn play []
-  (output/print-message (output/welcome))
-  (select-players []))

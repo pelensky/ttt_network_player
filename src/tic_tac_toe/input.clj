@@ -17,9 +17,16 @@
             converted-selection
             (recur))))
 
-(defn get-player []
-  (let [selection (Integer/parseInt (read-line))]
-    (if (or (= selection 1) (= selection 2))
-      selection
-      (recur))))
+(defn get-integer []
+  (or (try 
+    (Integer/parseInt (read-line))
+      (catch Exception e))
+        (recur)))
+
+(defn get-number []
+  (let [selection 
+    (get-integer)]
+      (if (or (= selection 1) (= selection 2))
+        selection
+          (recur))))
 
