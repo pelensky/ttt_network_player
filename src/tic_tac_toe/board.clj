@@ -1,6 +1,6 @@
 (ns tic-tac-toe.board)
 
-(defn take-turn [space board]
+(defn place-marker [space board]
   (if (not (.contains board space))
     (conj board space)
     board))

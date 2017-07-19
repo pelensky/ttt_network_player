@@ -27,8 +27,8 @@
 (defn single-turn [board players]
   (let [player (current-player board players)]
     (if (= player :human)
-      (ttt-board/take-turn (human/choose-space) board)
-      (ttt-board/take-turn (random-computer/choose-space board) board))))
+      (ttt-board/place-marker (human/choose-space) board)
+      (ttt-board/place-marker (random-computer/choose-space board) board))))
 
 (defn game-runner [board players]
   (output/print-message (output/take-turn board))
