@@ -49,4 +49,8 @@
 
   (it "prints new game"
     (should-contain "Play again?\n1) Yes\n2) No"
-      (with-out-str(print-message (play-again))))))
+      (with-out-str(print-message (play-again)))))
+
+  (it "prints exiting"
+    (should-contain "Exiting"
+      (with-out-str (print-message (exiting))))))

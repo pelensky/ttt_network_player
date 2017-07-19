@@ -49,5 +49,8 @@
 (defn play-again []
   "Play again?\n1) Yes\n2) No")
 
+(defn exiting []
+  "Exiting")
+
 (defn print-message [message]
   (println message))
