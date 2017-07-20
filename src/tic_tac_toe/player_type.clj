@@ -1,7 +1,9 @@
 (ns tic-tac-toe.player-type)
 
+(def human 1)
+
 (defn select-player [option]
-  (if (= 1 option)
+  (if (= human option)
     :human
     :random-computer))
 
