@@ -6,10 +6,18 @@
             [tic-tac-toe.input :as input]
             [tic-tac-toe.output :as output]))
 
+(def play-again-selection 1)
+
+(def player-x 0)
+
+(def player-o 1)
+
+(def max-players 2)
+
 (declare play)
 
 (defn play-again [selection]
-  (if (= selection 1)
+  (if (= selection play-again-selection)
     (play))
     (output/print-message (output/exiting)))
 
@@ -21,8 +29,8 @@
 
 (defn current-player [board players]
   (if (even? (count board))
-    (get players 0)
-    (get players 1)))
+    (get players player-x)
+    (get players player-o)))
 
 (defn single-turn [board players]
   (let [player (current-player board players)]
@@ -41,11 +49,10 @@
 (defn select-players [players]
   (output/print-message (output/player-type (if (empty? players) "X" "O")))
   (let [updated-players (player-type/select-players players (player-type/select-player (input/get-number)))]
-    (if (= 2 (count updated-players ))
+    (if (= max-players (count updated-players ))
       (game-runner [] updated-players)
       (recur updated-players))))
 
 (defn play []
   (output/print-message (output/welcome))
   (select-players []))
-
