@@ -5,15 +5,19 @@
 (describe "Taking turns"
   (it "X plays"
     (should= [1]
-      (take-turn 1 [])))
+      (place-marker 1 [])))
 
   (it "X play in a different space"
     (should= [0]
-      (take-turn 0 [])))
+      (place-marker 0 [])))
 
   (it "O play after X"
     (should= [8 1]
-      (take-turn 1 [8])))
+      (place-marker 1 [8])))
+
+  (it "rejects duplicate values"
+    (should= [0 1 2]
+      (place-marker 0 [0 1 2]))))
 
   (it "check value of empty space"
     (should= nil
@@ -27,18 +31,14 @@
     (should= "O"
       (check-value-of-space 5 [0 5])))
 
-  (it "rejects duplicate values"
-    (should= [0 1 2]
-      (take-turn 0 [0 1 2]))))
-
 (describe "Split Board"
   (it "creates a vector with moves - one"
     (should= ["X" nil nil nil nil nil nil nil nil]
-      (convert-board [0])))
+      (convert-board-to-full-board [0])))
 
   (it "creates a vector with moves - multiple"
     (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
-      (convert-board [0 4 1 2 6 3 5])))
+      (convert-board-to-full-board [0 4 1 2 6 3 5])))
 
   (it "splits the vector into three"
     (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]

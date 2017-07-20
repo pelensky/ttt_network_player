@@ -13,7 +13,7 @@
     value))
 
 (defn- replace-nil-values-with-spaces [board]
-  (let [full-board (ttt-board/convert-board board)]
+  (let [full-board (ttt-board/convert-board-to-full-board board)]
     (for [space full-board]
       (update-space space))))
 
@@ -37,6 +37,9 @@
   (str
     (if (ttt-board/game-won-by? "X" board ) "X" "O") " is the winner"))
 
+(defn play-again []
+  "Play again?\n1) Yes\n2) No")
+
 (defn game-over [board]
   (str "Game Over\n"
     (if (ttt-board/game-tied? board)
@@ -45,6 +48,9 @@
 
 (defn player-type [marker]
   (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer"))
+
+(defn exiting []
+  "Exiting")
 
 (defn print-message [message]
   (println message))
