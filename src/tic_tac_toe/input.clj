@@ -6,6 +6,8 @@
     "A2" 3 "B2" 4 "C2" 5
     "A3" 6 "B3" 7 "C3" 8})
 
+(def valid-options [1 2])
+
 (defn- convert-coordinate-to-space []
     (get conversions
       (string/upper-case
@@ -25,7 +27,7 @@
         (recur)))
 
 (defn- valid-selection [selection]
-  (or (= selection 1) (= selection 2)))
+  (some (partial = selection) valid-options))
 
 (defn get-number []
   (let [selection (validate-integer)]
