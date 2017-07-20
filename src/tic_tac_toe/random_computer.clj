@@ -1,7 +1,9 @@
 (ns tic-tac-toe.random-computer)
 
+(def number-of-rows 3)
+
 (defn- check-if-spaces-are-available [board]
-  (for [space (range 9)]
+  (for [space (range (* number-of-rows number-of-rows))]
     (if
       (not (some (partial = space) board)) 
       space)))
