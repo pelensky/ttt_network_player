@@ -65,12 +65,12 @@
   (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))
 
 (defn rows []
-  (map (fn [row-start] (range row-start (+ row-start number-of-rows)))
-        (map (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
+  (mapv (fn [row-start] (range row-start (+ row-start number-of-rows)))
+       (mapv (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
 
 (defn columns []
-  (map (fn [starting-index] (range starting-index (* number-of-rows number-of-rows) number-of-rows))
-        (range number-of-rows)))
+  (mapv (fn [starting-index] (range starting-index (* number-of-rows number-of-rows) number-of-rows))
+       (range number-of-rows)))
 
 (defn left-diagonal []
   (range 0 (* number-of-rows number-of-rows) (inc number-of-rows)))
@@ -83,3 +83,9 @@
 
 (defn winning-positions []
   (into [] (concat (rows) (columns) (diagonals) )))
+
+(defn winning-scenarios [board]
+  (let [full-board (convert-board-to-full-board board)]
+  (for [scenario (winning-positions)]
+    (map #(get full-board %) scenario))))
+
