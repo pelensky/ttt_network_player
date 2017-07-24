@@ -23,24 +23,6 @@
     ( for [row (partition number-of-rows full-board)]
       (vec row))))
 
-(defn- split-board-into-columns [rows]
-  (apply mapv vector rows))
-
-(defn- split-left-diagonal [rows accumulator current-index]
-  (if (>= current-index (count rows))
-    (conj [] accumulator)
-    (recur rows
-           (conj accumulator (get ( get rows current-index) current-index))
-           (inc current-index))))
-
-(defn- split-right-diagonal [rows accumulator current-row-index current-column-index]
-  (if (>= current-row-index (count rows))
-    (conj [] accumulator)
-    (recur rows
-           (conj accumulator (get (get rows current-row-index) current-column-index))
-           (inc current-row-index)
-           (dec current-column-index))))
-
 (defn rows []
   (mapv (fn [row-start] (range row-start (+ row-start number-of-rows)))
        (mapv (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
