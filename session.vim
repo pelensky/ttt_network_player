@@ -25,7 +25,6 @@ nnoremap  l
 nnoremap  :wa:!!
 map  :NERDTreeToggle
 map  <Plug>(ctrlp)
-map  a
 nmap # #nzz
 nmap * *Nzz
 nmap ,ca <Plug>NERDCommenterAltDelims
@@ -145,12 +144,6 @@ nmap ]b <Plug>unimpairedBNext
 nmap ]A <Plug>unimpairedALast
 nmap ]a <Plug>unimpairedANext
 vmap ]% ]%m'gv``
-omap ar <Plug>(textobj-rubyblock-a)
-xmap ar <Plug>(textobj-rubyblock-a)
-omap ae <Plug>(textobj-entire-a)
-xmap ae <Plug>(textobj-entire-a)
-omap al <Plug>(textobj-line-a)
-xmap al <Plug>(textobj-line-a)
 vmap a% [%v]%
 nmap cS <Plug>CSurround
 nmap cs <Plug>Csurround
@@ -171,12 +164,6 @@ nmap gcc <Plug>CommentaryLine
 omap gc <Plug>Commentary
 nmap gc <Plug>Commentary
 xmap gc <Plug>Commentary
-omap ir <Plug>(textobj-rubyblock-i)
-xmap ir <Plug>(textobj-rubyblock-i)
-omap ie <Plug>(textobj-entire-i)
-xmap ie <Plug>(textobj-entire-i)
-omap il <Plug>(textobj-line-i)
-xmap il <Plug>(textobj-line-i)
 nnoremap j gj
 nnoremap k gk
 nmap n nzz
@@ -189,18 +176,6 @@ smap <S-Tab> <Plug>snipMateBack
 vnoremap <silent> <Plug>NetrwBrowseXVis :call netrw#BrowseXVis()
 nnoremap <silent> <Plug>NetrwBrowseX :call netrw#BrowseX(expand((exists("g:netrw_gx")? g:netrw_gx : '<cfile>')),netrw#CheckIfRemote())
 nnoremap <Plug>FireplaceSource :Source 
-onoremap <silent> <Plug>(textobj-rubyblock-i) :call g:__textobj_rubyblock.do_by_function("select-i","-","o")
-vnoremap <silent> <Plug>(textobj-rubyblock-i) :call g:__textobj_rubyblock.do_by_function("select-i","-","v")
-onoremap <silent> <Plug>(textobj-rubyblock-a) :call g:__textobj_rubyblock.do_by_function("select-a","-","o")
-vnoremap <silent> <Plug>(textobj-rubyblock-a) :call g:__textobj_rubyblock.do_by_function("select-a","-","v")
-onoremap <silent> <Plug>(textobj-entire-i) :call g:__textobj_entire.do_by_function("select-i","-","o")
-vnoremap <silent> <Plug>(textobj-entire-i) :call g:__textobj_entire.do_by_function("select-i","-","v")
-onoremap <silent> <Plug>(textobj-entire-a) :call g:__textobj_entire.do_by_function("select-a","-","o")
-vnoremap <silent> <Plug>(textobj-entire-a) :call g:__textobj_entire.do_by_function("select-a","-","v")
-onoremap <silent> <Plug>(textobj-line-i) :call g:__textobj_line.do_by_function("select-i","-","o")
-vnoremap <silent> <Plug>(textobj-line-i) :call g:__textobj_line.do_by_function("select-i","-","v")
-onoremap <silent> <Plug>(textobj-line-a) :call g:__textobj_line.do_by_function("select-a","-","o")
-vnoremap <silent> <Plug>(textobj-line-a) :call g:__textobj_line.do_by_function("select-a","-","v")
 vnoremap <silent> <F25> :silent doautocmd FocusGained %gv
 vnoremap <silent> <F24> :silent doautocmd FocusLost %gv
 onoremap <silent> <F25> :silent doautocmd FocusGained %
@@ -282,25 +257,15 @@ inoremap 	 =InsertTabWrapper()
 imap  <Plug>DiscretionaryEnd
 imap 	 <Plug>snipMateShow
 imap  <Plug>Isurround
-imap <silent> [6~ <PageDown>
-imap <silent> [5~ <PageUp>
-imap <silent> OF <End>
-imap <silent> OH <Home>
-imap <silent> OD <Left>
-imap <silent> OC <Right>
-imap <silent> OB <Down>
-imap <silent> OA <Up>
-inoremap  =GetCloseTag()
 cnoremap %s/ %s/\v
 imap ,p :set invpaste paste?
-inoremap jj 
-inoremap kk :wa | :echo "it's cool, you saved all the things" 
 inoremap { {}O
 cabbr rename =getcmdpos() == 1 && getcmdtype() == ":" ? "Rename" : "rename"
 cabbr grtoggle GoldenRatioToggle
 cabbr grresize GoldenRatioResize
 let &cpo=s:cpo_save
 unlet s:cpo_save
+set autoindent
 set autowrite
 set background=dark
 set backspace=2
@@ -313,7 +278,7 @@ set laststatus=2
 set listchars=tab:»·,trail:·,nbsp:·
 set pastetoggle=,p
 set ruler
-set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/vim-ruby,~/.vim/bundle/vim-rspec,~/.vim/bundle/vim-easy-align,~/.vim/bundle/splitjoin.vim,~/.vim/bundle/vim-run-interactive,~/.vim/bundle/vim-coffee-script,~/.vim/bundle/ctrlp.vim,~/.vim/bundle/vim-mkdir,~/.vim/bundle/syntastic,~/.vim/bundle/vim-bundler,~/.vim/bundle/vim-commentary,~/.vim/bundle/vim-endwise,~/.vim/bundle/vim-eunuch,~/.vim/bundle/vim-fugitive,~/.vim/bundle/vim-rails,~/.vim/bundle/vim-repeat,~/.vim/bundle/vim-unimpaired,~/.vim/bundle/vim-surround,~/.vim/bundle/vim-flavored-markdown,~/.vim/bundle/ctags.vim,~/.vim/bundle/matchit.zip,~/.vim/bundle/ReplaceWithRegister,~/.vim/bundle/dash.vim,~/.vim/bundle/vim-clojure-static,~/.vim/bundle/vim-autotag,~/.vim/bundle/rainbow_parentheses.vim,~/.vim/bundle/rainbow,~/.vim/bundle/Sierra,~/.vim/bundle/vim-addon-mw-utils,~/.vim/bundle/tlib_vim,~/.vim/bundle/vim-snipmate,~/.vim/bundle/vim-snippets,~/.vim/bundle/vim-javascript,~/.vim/bundle/ag.vim,~/.vim/bundle/vim-airline,~/.vim/bundle/golden-ratio,~/.vim/bundle/n
+set runtimepath=~/.vim,~/.vim/bundle/Vundle.vim,~/.vim/bundle/vim-ruby,~/.vim/bundle/vim-rspec,~/.vim/bundle/vim-easy-align,~/.vim/bundle/splitjoin.vim,~/.vim/bundle/vim-run-interactive,~/.vim/bundle/vim-coffee-script,~/.vim/bundle/ctrlp.vim,~/.vim/bundle/vim-mkdir,~/.vim/bundle/syntastic,~/.vim/bundle/vim-bundler,~/.vim/bundle/vim-commentary,~/.vim/bundle/vim-endwise,~/.vim/bundle/vim-eunuch,~/.vim/bundle/vim-fugitive,~/.vim/bundle/vim-rails,~/.vim/bundle/vim-repeat,~/.vim/bundle/vim-unimpaired,~/.vim/bundle/vim-surround,~/.vim/bundle/vim-flavored-markdown,~/.vim/bundle/ctags.vim,~/.vim/bundle/matchit.zip,~/.vim/bundle/ReplaceWithRegister,~/.vim/bundle/dash.vim,~/.vim/bundle/vim-autotag,~/.vim/bundle/rainbow_parentheses.vim,~/.vim/bundle/rainbow,~/.vim/bundle/Sierra,~/.vim/bundle/vim-addon-mw-utils,~/.vim/bundle/tlib_vim,~/.vim/bundle/vim-snipmate,~/.vim/bundle/vim-snippets,~/.vim/bundle/vim-javascript,~/.vim/bundle/ag.vim,~/.vim/bundle/vim-airline,~/.vim/bundle/golden-ratio,~/.vim/bundle/nerdtree,~/.vim/bundle/nerdcomment
 set scrolloff=3
 set shell=/bin/sh
 set shiftround
@@ -329,7 +294,7 @@ set textwidth=80
 set updatetime=500
 set wildmenu
 set wildmode=list:longest,list:full
-set window=47
+set window=52
 set nowritebackup
 let s:so_save = &so | let s:siso_save = &siso | set so=0 siso=0
 let v:this_session=expand("<sfile>:p")
@@ -343,16 +308,16 @@ badd +0 spec/tic_tac_toe/board_spec.clj
 badd +0 src/tic_tac_toe/board.clj
 badd +0 spec/tic_tac_toe/app_runner_spec.clj
 badd +0 src/tic_tac_toe/app_runner.clj
+badd +0 spec/tic_tac_toe/player_type_spec.clj
+badd +0 src/tic_tac_toe/player_type.clj
 badd +0 spec/tic_tac_toe/input_spec.clj
 badd +0 src/tic_tac_toe/input.clj
 badd +0 spec/tic_tac_toe/output_spec.clj
 badd +0 src/tic_tac_toe/output.clj
 badd +0 spec/tic_tac_toe/human_spec.clj
 badd +0 src/tic_tac_toe/human.clj
-badd +0 spec/tic_tac_toe/player_type_spec.clj
-badd +0 src/tic_tac_toe/player_type.clj
-badd +0 spec/tic_tac_toe/random_computer_spec.clj
-badd +0 src/tic_tac_toe/random_computer.clj
+badd +12 spec/tic_tac_toe/random_computer_spec.clj
+badd +9 src/tic_tac_toe/random_computer.clj
 argglobal
 silent! argdel *
 $argadd spec/tic_tac_toe/board_spec.clj
@@ -365,11 +330,13 @@ vsplit
 wincmd w
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -377,20 +344,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -403,16 +398,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -474,7 +485,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -487,7 +498,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -524,17 +535,19 @@ setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 23) / 46)
+let s:l = 2 - ((1 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-6
+2
 normal! 0
 wincmd w
 argglobal
 edit src/tic_tac_toe/board.clj
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -542,20 +555,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -568,16 +609,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -639,7 +696,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -652,7 +709,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -689,15 +746,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 15 - ((14 * winheight(0) + 23) / 46)
+let s:l = 22 - ((21 * winheight(0) + 26) / 52)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-15
-normal! 0
+22
+normal! 06|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
 tabedit spec/tic_tac_toe/app_runner_spec.clj
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -706,11 +763,13 @@ vsplit
 wincmd w
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -718,20 +777,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -744,16 +831,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -815,7 +918,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -828,7 +931,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -846,7 +949,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(2)
+setlocal statusline=%!airline#statusline(1)
 setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
 setlocal noswapfile
 setlocal synmaxcol=3000
@@ -865,7 +968,7 @@ setlocal nowinfixwidth
 setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 53 - ((44 * winheight(0) + 22) / 45)
+let s:l = 53 - ((49 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -876,6 +979,8 @@ argglobal
 edit src/tic_tac_toe/app_runner.clj
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -883,20 +988,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -909,16 +1042,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -980,7 +1129,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -993,7 +1142,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -1011,7 +1160,7 @@ setlocal nospell
 setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
 setlocal spellfile=
 setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(3)
+setlocal statusline=%!airline#statusline(2)
 setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
 setlocal noswapfile
 setlocal synmaxcol=3000
@@ -1030,16 +1179,15 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 20 - ((19 * winheight(0) + 22) / 45)
+let s:l = 21 - ((20 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
-20
-normal! 025|
+21
+normal! 04|
 wincmd w
-2wincmd w
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
 tabedit spec/tic_tac_toe/player_type_spec.clj
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -1048,11 +1196,13 @@ vsplit
 wincmd w
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 195 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 120 + 158) / 316)
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -1060,20 +1210,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -1086,16 +1264,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -1157,7 +1351,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -1170,7 +1364,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -1204,10 +1398,10 @@ setlocal noundofile
 setlocal undolevels=-123456
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal wrap
+setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 17 - ((11 * winheight(0) + 23) / 46)
+let s:l = 17 - ((16 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -1218,6 +1412,8 @@ argglobal
 edit src/tic_tac_toe/player_type.clj
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -1225,20 +1421,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -1251,16 +1475,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -1322,7 +1562,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -1335,7 +1575,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -1369,700 +1609,18 @@ setlocal noundofile
 setlocal undolevels=-123456
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal nowrap
+setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 6 - ((5 * winheight(0) + 23) / 46)
+let s:l = 6 - ((5 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 6
 normal! 012|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 195 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 120 + 158) / 316)
-tabedit spec/tic_tac_toe/human_spec.clj
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
-argglobal
-let s:cpo_save=&cpo
-set cpo&vim
-smap <buffer> ( <Plug>FireplaceRecall
-nmap <buffer> gf <Plug>FireplaceTabeditFile
-nmap <buffer>  <Plug>FireplaceSplitFile
-nmap <buffer> f <Plug>FireplaceSplitFile
-nmap <buffer> gd <Plug>FireplaceDtabjump
-nmap <buffer> d <Plug>FireplaceDsplit
-nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
-nmap <buffer> K <Plug>FireplaceK
-nmap <buffer> [d <Plug>FireplaceSource
-nmap <buffer> [ <Plug>FireplaceDjump
-nmap <buffer> ]d <Plug>FireplaceSource
-nmap <buffer> ] <Plug>FireplaceDjump
-nmap <buffer> cqc <Plug>FireplacePrompti
-nmap <buffer> cqp <Plug>FireplacePrompt
-nmap <buffer> cqq <Plug>FireplaceCountEdit
-nmap <buffer> cq <Plug>FireplaceEdit
-nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
-nmap <buffer> c1m <Plug>Fireplace1MacroExpand
-nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
-nmap <buffer> cm <Plug>FireplaceMacroExpand
-nmap <buffer> c!! <Plug>FireplaceCountFilter
-nmap <buffer> c! <Plug>FireplaceFilter
-nmap <buffer> cpp <Plug>FireplaceCountPrint
-nmap <buffer> cp <Plug>FireplacePrint
-nmap <buffer> gf <Plug>FireplaceEditFile
-cmap <buffer>  <Plug><cpath>
-cmap <buffer>  <Plug><cfile>
-cmap <buffer> ( <Plug>FireplaceRecall
-imap <buffer> ( <Plug>FireplaceRecall
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=+2
-setlocal colorcolumn=+2
-setlocal comments=n:;
-setlocal commentstring=;\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=clojurecomplete#Complete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal define=^\\s*(def\\w*
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'clojure'
-setlocal filetype=clojure
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
-setlocal formatoptions=cq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetClojureIndent()
-setlocal indentkeys=!,o,O
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
-setlocal keywordprg=:Doc
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
-set list
-setlocal list
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=2
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(1)
-setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'clojure'
-setlocal syntax=clojure
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=80
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 021|
-wincmd w
-argglobal
-edit src/tic_tac_toe/human.clj
-let s:cpo_save=&cpo
-set cpo&vim
-smap <buffer> ( <Plug>FireplaceRecall
-nmap <buffer> gf <Plug>FireplaceTabeditFile
-nmap <buffer>  <Plug>FireplaceSplitFile
-nmap <buffer> f <Plug>FireplaceSplitFile
-nmap <buffer> gd <Plug>FireplaceDtabjump
-nmap <buffer> d <Plug>FireplaceDsplit
-nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
-nmap <buffer> K <Plug>FireplaceK
-nmap <buffer> [d <Plug>FireplaceSource
-nmap <buffer> [ <Plug>FireplaceDjump
-nmap <buffer> ]d <Plug>FireplaceSource
-nmap <buffer> ] <Plug>FireplaceDjump
-nmap <buffer> cqc <Plug>FireplacePrompti
-nmap <buffer> cqp <Plug>FireplacePrompt
-nmap <buffer> cqq <Plug>FireplaceCountEdit
-nmap <buffer> cq <Plug>FireplaceEdit
-nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
-nmap <buffer> c1m <Plug>Fireplace1MacroExpand
-nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
-nmap <buffer> cm <Plug>FireplaceMacroExpand
-nmap <buffer> c!! <Plug>FireplaceCountFilter
-nmap <buffer> c! <Plug>FireplaceFilter
-nmap <buffer> cpp <Plug>FireplaceCountPrint
-nmap <buffer> cp <Plug>FireplacePrint
-nmap <buffer> gf <Plug>FireplaceEditFile
-cmap <buffer>  <Plug><cpath>
-cmap <buffer>  <Plug><cfile>
-cmap <buffer> ( <Plug>FireplaceRecall
-imap <buffer> ( <Plug>FireplaceRecall
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=+2
-setlocal colorcolumn=+2
-setlocal comments=n:;
-setlocal commentstring=;\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=clojurecomplete#Complete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal define=^\\s*(def\\w*
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'clojure'
-setlocal filetype=clojure
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
-setlocal formatoptions=cq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetClojureIndent()
-setlocal indentkeys=!,o,O
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
-setlocal keywordprg=:Doc
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
-set list
-setlocal list
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=2
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(2)
-setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'clojure'
-setlocal syntax=clojure
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=80
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
-wincmd w
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
-tabedit spec/tic_tac_toe/random_computer_spec.clj
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 195 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 120 + 158) / 316)
-argglobal
-let s:cpo_save=&cpo
-set cpo&vim
-smap <buffer> ( <Plug>FireplaceRecall
-nmap <buffer> gf <Plug>FireplaceTabeditFile
-nmap <buffer>  <Plug>FireplaceSplitFile
-nmap <buffer> f <Plug>FireplaceSplitFile
-nmap <buffer> gd <Plug>FireplaceDtabjump
-nmap <buffer> d <Plug>FireplaceDsplit
-nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
-nmap <buffer> K <Plug>FireplaceK
-nmap <buffer> [d <Plug>FireplaceSource
-nmap <buffer> [ <Plug>FireplaceDjump
-nmap <buffer> ]d <Plug>FireplaceSource
-nmap <buffer> ] <Plug>FireplaceDjump
-nmap <buffer> cqc <Plug>FireplacePrompti
-nmap <buffer> cqp <Plug>FireplacePrompt
-nmap <buffer> cqq <Plug>FireplaceCountEdit
-nmap <buffer> cq <Plug>FireplaceEdit
-nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
-nmap <buffer> c1m <Plug>Fireplace1MacroExpand
-nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
-nmap <buffer> cm <Plug>FireplaceMacroExpand
-nmap <buffer> c!! <Plug>FireplaceCountFilter
-nmap <buffer> c! <Plug>FireplaceFilter
-nmap <buffer> cpp <Plug>FireplaceCountPrint
-nmap <buffer> cp <Plug>FireplacePrint
-nmap <buffer> gf <Plug>FireplaceEditFile
-cmap <buffer>  <Plug><cpath>
-cmap <buffer>  <Plug><cfile>
-cmap <buffer> ( <Plug>FireplaceRecall
-imap <buffer> ( <Plug>FireplaceRecall
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=+2
-setlocal colorcolumn=+2
-setlocal comments=n:;
-setlocal commentstring=;\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=clojurecomplete#Complete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal define=^\\s*(def\\w*
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'clojure'
-setlocal filetype=clojure
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
-setlocal formatoptions=cq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetClojureIndent()
-setlocal indentkeys=!,o,O
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
-setlocal keywordprg=:Doc
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
-set list
-setlocal list
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=2
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(1)
-setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'clojure'
-setlocal syntax=clojure
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=80
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal wrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 12 - ((11 * winheight(0) + 22) / 45)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-12
-normal! 027|
-wincmd w
-argglobal
-edit src/tic_tac_toe/random_computer.clj
-let s:cpo_save=&cpo
-set cpo&vim
-smap <buffer> ( <Plug>FireplaceRecall
-nmap <buffer> gf <Plug>FireplaceTabeditFile
-nmap <buffer>  <Plug>FireplaceSplitFile
-nmap <buffer> f <Plug>FireplaceSplitFile
-nmap <buffer> gd <Plug>FireplaceDtabjump
-nmap <buffer> d <Plug>FireplaceDsplit
-nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
-nmap <buffer> K <Plug>FireplaceK
-nmap <buffer> [d <Plug>FireplaceSource
-nmap <buffer> [ <Plug>FireplaceDjump
-nmap <buffer> ]d <Plug>FireplaceSource
-nmap <buffer> ] <Plug>FireplaceDjump
-nmap <buffer> cqc <Plug>FireplacePrompti
-nmap <buffer> cqp <Plug>FireplacePrompt
-nmap <buffer> cqq <Plug>FireplaceCountEdit
-nmap <buffer> cq <Plug>FireplaceEdit
-nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
-nmap <buffer> c1m <Plug>Fireplace1MacroExpand
-nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
-nmap <buffer> cm <Plug>FireplaceMacroExpand
-nmap <buffer> c!! <Plug>FireplaceCountFilter
-nmap <buffer> c! <Plug>FireplaceFilter
-nmap <buffer> cpp <Plug>FireplaceCountPrint
-nmap <buffer> cp <Plug>FireplacePrint
-nmap <buffer> gf <Plug>FireplaceEditFile
-cmap <buffer>  <Plug><cpath>
-cmap <buffer>  <Plug><cfile>
-cmap <buffer> ( <Plug>FireplaceRecall
-imap <buffer> ( <Plug>FireplaceRecall
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=+2
-setlocal colorcolumn=+2
-setlocal comments=n:;
-setlocal commentstring=;\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=clojurecomplete#Complete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal define=^\\s*(def\\w*
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'clojure'
-setlocal filetype=clojure
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
-setlocal formatoptions=cq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetClojureIndent()
-setlocal indentkeys=!,o,O
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
-setlocal keywordprg=:Doc
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
-set list
-setlocal list
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=2
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(2)
-setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'clojure'
-setlocal syntax=clojure
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=80
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 9 - ((8 * winheight(0) + 22) / 45)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-9
-normal! 042|
-wincmd w
-exe 'vert 1resize ' . ((&columns * 195 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 120 + 158) / 316)
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
 tabedit spec/tic_tac_toe/input_spec.clj
 set splitbelow splitright
 wincmd _ | wincmd |
@@ -2071,11 +1629,13 @@ vsplit
 wincmd w
 wincmd t
 set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 195 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 120 + 158) / 316)
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -2083,20 +1643,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -2109,16 +1697,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -2180,7 +1784,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -2193,7 +1797,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -2227,10 +1831,10 @@ setlocal noundofile
 setlocal undolevels=-123456
 setlocal nowinfixheight
 setlocal nowinfixwidth
-setlocal wrap
+setlocal nowrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 7 - ((6 * winheight(0) + 23) / 46)
+let s:l = 7 - ((6 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
@@ -2241,6 +1845,8 @@ argglobal
 edit src/tic_tac_toe/input.clj
 let s:cpo_save=&cpo
 set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
 smap <buffer> ( <Plug>FireplaceRecall
 nmap <buffer> gf <Plug>FireplaceTabeditFile
 nmap <buffer>  <Plug>FireplaceSplitFile
@@ -2248,20 +1854,48 @@ nmap <buffer> f <Plug>FireplaceSplitFile
 nmap <buffer> gd <Plug>FireplaceDtabjump
 nmap <buffer> d <Plug>FireplaceDsplit
 nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
 nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
 nmap <buffer> [d <Plug>FireplaceSource
 nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
 nmap <buffer> ]d <Plug>FireplaceSource
 nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
 nmap <buffer> cqc <Plug>FireplacePrompti
 nmap <buffer> cqp <Plug>FireplacePrompt
 nmap <buffer> cqq <Plug>FireplaceCountEdit
@@ -2274,16 +1908,32 @@ nmap <buffer> c!! <Plug>FireplaceCountFilter
 nmap <buffer> c! <Plug>FireplaceFilter
 nmap <buffer> cpp <Plug>FireplaceCountPrint
 nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
 nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
 cmap <buffer>  <Plug><cpath>
 cmap <buffer>  <Plug><cfile>
 cmap <buffer> ( <Plug>FireplaceRecall
 imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
 setlocal noarabic
-setlocal autoindent
+setlocal noautoindent
 setlocal backupcopy=
 setlocal nobinary
 setlocal nobreakindent
@@ -2345,7 +1995,7 @@ setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
 setlocal keywordprg=:Doc
 setlocal nolinebreak
 setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
 set list
 setlocal list
 setlocal makeencoding=
@@ -2358,348 +2008,7 @@ set number
 setlocal number
 setlocal numberwidth=4
 setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=2
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(2)
-setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'clojure'
-setlocal syntax=clojure
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=80
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 1 - ((0 * winheight(0) + 23) / 46)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-1
-normal! 0
-wincmd w
-exe 'vert 1resize ' . ((&columns * 195 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 120 + 158) / 316)
-tabedit spec/tic_tac_toe/output_spec.clj
-set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
-wincmd t
-set winminheight=1 winheight=1 winminwidth=1 winwidth=1
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
-argglobal
-let s:cpo_save=&cpo
-set cpo&vim
-smap <buffer> ( <Plug>FireplaceRecall
-nmap <buffer> gf <Plug>FireplaceTabeditFile
-nmap <buffer>  <Plug>FireplaceSplitFile
-nmap <buffer> f <Plug>FireplaceSplitFile
-nmap <buffer> gd <Plug>FireplaceDtabjump
-nmap <buffer> d <Plug>FireplaceDsplit
-nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
-nmap <buffer> K <Plug>FireplaceK
-nmap <buffer> [d <Plug>FireplaceSource
-nmap <buffer> [ <Plug>FireplaceDjump
-nmap <buffer> ]d <Plug>FireplaceSource
-nmap <buffer> ] <Plug>FireplaceDjump
-nmap <buffer> cqc <Plug>FireplacePrompti
-nmap <buffer> cqp <Plug>FireplacePrompt
-nmap <buffer> cqq <Plug>FireplaceCountEdit
-nmap <buffer> cq <Plug>FireplaceEdit
-nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
-nmap <buffer> c1m <Plug>Fireplace1MacroExpand
-nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
-nmap <buffer> cm <Plug>FireplaceMacroExpand
-nmap <buffer> c!! <Plug>FireplaceCountFilter
-nmap <buffer> c! <Plug>FireplaceFilter
-nmap <buffer> cpp <Plug>FireplaceCountPrint
-nmap <buffer> cp <Plug>FireplacePrint
-nmap <buffer> gf <Plug>FireplaceEditFile
-cmap <buffer>  <Plug><cpath>
-cmap <buffer>  <Plug><cfile>
-cmap <buffer> ( <Plug>FireplaceRecall
-imap <buffer> ( <Plug>FireplaceRecall
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=+2
-setlocal colorcolumn=+2
-setlocal comments=n:;
-setlocal commentstring=;\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=clojurecomplete#Complete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal define=^\\s*(def\\w*
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'clojure'
-setlocal filetype=clojure
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
-setlocal formatoptions=cq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetClojureIndent()
-setlocal indentkeys=!,o,O
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
-setlocal keywordprg=:Doc
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
-set list
-setlocal list
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
-setlocal nopreserveindent
-setlocal nopreviewwindow
-setlocal quoteescape=\\
-setlocal noreadonly
-setlocal norelativenumber
-setlocal norightleft
-setlocal rightleftcmd=search
-setlocal noscrollbind
-setlocal shiftwidth=2
-setlocal noshortname
-setlocal signcolumn=auto
-setlocal nosmartindent
-setlocal softtabstop=2
-setlocal nospell
-setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
-setlocal spellfile=
-setlocal spelllang=en_gb
-setlocal statusline=%!airline#statusline(1)
-setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
-setlocal noswapfile
-setlocal synmaxcol=3000
-if &syntax != 'clojure'
-setlocal syntax=clojure
-endif
-setlocal tabstop=2
-setlocal tagcase=
-setlocal tags=
-setlocal textwidth=80
-setlocal thesaurus=
-setlocal noundofile
-setlocal undolevels=-123456
-setlocal nowinfixheight
-setlocal nowinfixwidth
-setlocal nowrap
-setlocal wrapmargin=0
-silent! normal! zE
-let s:l = 15 - ((8 * winheight(0) + 23) / 46)
-if s:l < 1 | let s:l = 1 | endif
-exe s:l
-normal! zt
-15
-normal! 075|
-wincmd w
-argglobal
-edit src/tic_tac_toe/output.clj
-let s:cpo_save=&cpo
-set cpo&vim
-smap <buffer> ( <Plug>FireplaceRecall
-nmap <buffer> gf <Plug>FireplaceTabeditFile
-nmap <buffer>  <Plug>FireplaceSplitFile
-nmap <buffer> f <Plug>FireplaceSplitFile
-nmap <buffer> gd <Plug>FireplaceDtabjump
-nmap <buffer> d <Plug>FireplaceDsplit
-nmap <buffer>  <Plug>FireplaceDsplit
-xnoremap <buffer> <silent> ,a} `>a}`<i{
-xnoremap <buffer> <silent> ,a{ `>a}`<i{
-xnoremap <buffer> <silent> ,a) `>a)`<i(
-xnoremap <buffer> <silent> ,a( `>a)`<i(
-xnoremap <buffer> <silent> ,a' `>a'`<i'
-xnoremap <buffer> <silent> ,a] `>a]`<i[
-xnoremap <buffer> <silent> ,a[ `>a]`<i[
-xnoremap <buffer> <silent> ,a" `>a"`<i"
-xnoremap <buffer> <silent> ,a` `>a``<i`
-nmap <buffer> K <Plug>FireplaceK
-nmap <buffer> [d <Plug>FireplaceSource
-nmap <buffer> [ <Plug>FireplaceDjump
-nmap <buffer> ]d <Plug>FireplaceSource
-nmap <buffer> ] <Plug>FireplaceDjump
-nmap <buffer> cqc <Plug>FireplacePrompti
-nmap <buffer> cqp <Plug>FireplacePrompt
-nmap <buffer> cqq <Plug>FireplaceCountEdit
-nmap <buffer> cq <Plug>FireplaceEdit
-nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
-nmap <buffer> c1m <Plug>Fireplace1MacroExpand
-nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
-nmap <buffer> cm <Plug>FireplaceMacroExpand
-nmap <buffer> c!! <Plug>FireplaceCountFilter
-nmap <buffer> c! <Plug>FireplaceFilter
-nmap <buffer> cpp <Plug>FireplaceCountPrint
-nmap <buffer> cp <Plug>FireplacePrint
-nmap <buffer> gf <Plug>FireplaceEditFile
-cmap <buffer>  <Plug><cpath>
-cmap <buffer>  <Plug><cfile>
-cmap <buffer> ( <Plug>FireplaceRecall
-imap <buffer> ( <Plug>FireplaceRecall
-let &cpo=s:cpo_save
-unlet s:cpo_save
-setlocal keymap=
-setlocal noarabic
-setlocal autoindent
-setlocal backupcopy=
-setlocal nobinary
-setlocal nobreakindent
-setlocal breakindentopt=
-setlocal bufhidden=
-setlocal buflisted
-setlocal buftype=
-setlocal nocindent
-setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
-setlocal cinoptions=
-setlocal cinwords=if,else,while,do,for,switch
-set colorcolumn=+2
-setlocal colorcolumn=+2
-setlocal comments=n:;
-setlocal commentstring=;\ %s
-setlocal complete=.,w,b,u,t,i
-setlocal concealcursor=
-setlocal conceallevel=0
-setlocal completefunc=clojurecomplete#Complete
-setlocal nocopyindent
-setlocal cryptmethod=
-setlocal nocursorbind
-setlocal nocursorcolumn
-set cursorline
-setlocal cursorline
-setlocal define=^\\s*(def\\w*
-setlocal dictionary=
-setlocal nodiff
-setlocal equalprg=
-setlocal errorformat=
-setlocal expandtab
-if &filetype != 'clojure'
-setlocal filetype=clojure
-endif
-setlocal fixendofline
-setlocal foldcolumn=0
-setlocal foldenable
-setlocal foldexpr=0
-setlocal foldignore=#
-setlocal foldlevel=0
-setlocal foldmarker={{{,}}}
-setlocal foldmethod=manual
-setlocal foldminlines=1
-setlocal foldnestmax=20
-setlocal foldtext=foldtext()
-setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
-setlocal formatoptions=cq
-setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
-setlocal formatprg=
-setlocal grepprg=
-setlocal iminsert=0
-setlocal imsearch=0
-setlocal include=
-setlocal includeexpr=
-setlocal indentexpr=GetClojureIndent()
-setlocal indentkeys=!,o,O
-setlocal noinfercase
-setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
-setlocal keywordprg=:Doc
-setlocal nolinebreak
-setlocal nolisp
-setlocal lispwords=def,def-,defn,defn-,defmacro,defmacro-,defmethod,defmulti,defonce,defvar,defvar-,defunbound,let,fn,letfn,binding,proxy,defnk,if,if-not,if-let,when,when-not,when-let,when-first,cond,condp,loop,dotimes,for,while,do,doto,try,catch,locking,with-in-str,with-out-str,with-open,dosync,with-local-vars,doseq,dorun,doall,->,future,ns,clojure.core/ns,gen-class,gen-interface
-set list
-setlocal list
-setlocal makeencoding=
-setlocal makeprg=
-setlocal matchpairs=(:),{:},[:]
-setlocal modeline
-setlocal modifiable
-setlocal nrformats=bin,octal,hex
-set number
-setlocal number
-setlocal numberwidth=4
-setlocal omnifunc=fireplace#omnicomplete
-setlocal path=
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
 setlocal nopreserveindent
 setlocal nopreviewwindow
 setlocal quoteescape=\\
@@ -2736,16 +2045,1316 @@ setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
 silent! normal! zE
-let s:l = 47 - ((32 * winheight(0) + 23) / 46)
+let s:l = 1 - ((0 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
+tabedit spec/tic_tac_toe/output_spec.clj
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
+smap <buffer> ( <Plug>FireplaceRecall
+nmap <buffer> gf <Plug>FireplaceTabeditFile
+nmap <buffer>  <Plug>FireplaceSplitFile
+nmap <buffer> f <Plug>FireplaceSplitFile
+nmap <buffer> gd <Plug>FireplaceDtabjump
+nmap <buffer> d <Plug>FireplaceDsplit
+nmap <buffer>  <Plug>FireplaceDsplit
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
+nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
+nmap <buffer> [d <Plug>FireplaceSource
+nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
+nmap <buffer> ]d <Plug>FireplaceSource
+nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
+nmap <buffer> cqc <Plug>FireplacePrompti
+nmap <buffer> cqp <Plug>FireplacePrompt
+nmap <buffer> cqq <Plug>FireplaceCountEdit
+nmap <buffer> cq <Plug>FireplaceEdit
+nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
+nmap <buffer> c1m <Plug>Fireplace1MacroExpand
+nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
+nmap <buffer> cm <Plug>FireplaceMacroExpand
+nmap <buffer> c!! <Plug>FireplaceCountFilter
+nmap <buffer> c! <Plug>FireplaceFilter
+nmap <buffer> cpp <Plug>FireplaceCountPrint
+nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
+nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+cmap <buffer>  <Plug><cpath>
+cmap <buffer>  <Plug><cfile>
+cmap <buffer> ( <Plug>FireplaceRecall
+imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=+2
+setlocal colorcolumn=+2
+setlocal comments=n:;
+setlocal commentstring=;\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=clojurecomplete#Complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=^\\s*(def\\w*
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'clojure'
+setlocal filetype=clojure
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetClojureIndent()
+setlocal indentkeys=!,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
+setlocal keywordprg=:Doc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
+set list
+setlocal list
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=fireplace#omnicomplete
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en_gb
+setlocal statusline=%!airline#statusline(1)
+setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'clojure'
+setlocal syntax=clojure
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=80
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 15 - ((14 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+15
+normal! 075|
+wincmd w
+argglobal
+edit src/tic_tac_toe/output.clj
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
+smap <buffer> ( <Plug>FireplaceRecall
+nmap <buffer> gf <Plug>FireplaceTabeditFile
+nmap <buffer>  <Plug>FireplaceSplitFile
+nmap <buffer> f <Plug>FireplaceSplitFile
+nmap <buffer> gd <Plug>FireplaceDtabjump
+nmap <buffer> d <Plug>FireplaceDsplit
+nmap <buffer>  <Plug>FireplaceDsplit
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
+nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
+nmap <buffer> [d <Plug>FireplaceSource
+nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
+nmap <buffer> ]d <Plug>FireplaceSource
+nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
+nmap <buffer> cqc <Plug>FireplacePrompti
+nmap <buffer> cqp <Plug>FireplacePrompt
+nmap <buffer> cqq <Plug>FireplaceCountEdit
+nmap <buffer> cq <Plug>FireplaceEdit
+nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
+nmap <buffer> c1m <Plug>Fireplace1MacroExpand
+nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
+nmap <buffer> cm <Plug>FireplaceMacroExpand
+nmap <buffer> c!! <Plug>FireplaceCountFilter
+nmap <buffer> c! <Plug>FireplaceFilter
+nmap <buffer> cpp <Plug>FireplaceCountPrint
+nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
+nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+cmap <buffer>  <Plug><cpath>
+cmap <buffer>  <Plug><cfile>
+cmap <buffer> ( <Plug>FireplaceRecall
+imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=+2
+setlocal colorcolumn=+2
+setlocal comments=n:;
+setlocal commentstring=;\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=clojurecomplete#Complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=^\\s*(def\\w*
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'clojure'
+setlocal filetype=clojure
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetClojureIndent()
+setlocal indentkeys=!,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
+setlocal keywordprg=:Doc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
+set list
+setlocal list
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=fireplace#omnicomplete
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en_gb
+setlocal statusline=%!airline#statusline(2)
+setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'clojure'
+setlocal syntax=clojure
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=80
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 47 - ((40 * winheight(0) + 25) / 50)
 if s:l < 1 | let s:l = 1 | endif
 exe s:l
 normal! zt
 47
-normal! 080|
+normal! 025|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 120 + 158) / 316)
-exe 'vert 2resize ' . ((&columns * 195 + 158) / 316)
-tabnext 2
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
+tabedit spec/tic_tac_toe/human_spec.clj
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
+smap <buffer> ( <Plug>FireplaceRecall
+nmap <buffer> gf <Plug>FireplaceTabeditFile
+nmap <buffer>  <Plug>FireplaceSplitFile
+nmap <buffer> f <Plug>FireplaceSplitFile
+nmap <buffer> gd <Plug>FireplaceDtabjump
+nmap <buffer> d <Plug>FireplaceDsplit
+nmap <buffer>  <Plug>FireplaceDsplit
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
+nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
+nmap <buffer> [d <Plug>FireplaceSource
+nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
+nmap <buffer> ]d <Plug>FireplaceSource
+nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
+nmap <buffer> cqc <Plug>FireplacePrompti
+nmap <buffer> cqp <Plug>FireplacePrompt
+nmap <buffer> cqq <Plug>FireplaceCountEdit
+nmap <buffer> cq <Plug>FireplaceEdit
+nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
+nmap <buffer> c1m <Plug>Fireplace1MacroExpand
+nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
+nmap <buffer> cm <Plug>FireplaceMacroExpand
+nmap <buffer> c!! <Plug>FireplaceCountFilter
+nmap <buffer> c! <Plug>FireplaceFilter
+nmap <buffer> cpp <Plug>FireplaceCountPrint
+nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
+nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+cmap <buffer>  <Plug><cpath>
+cmap <buffer>  <Plug><cfile>
+cmap <buffer> ( <Plug>FireplaceRecall
+imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=+2
+setlocal colorcolumn=+2
+setlocal comments=n:;
+setlocal commentstring=;\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=clojurecomplete#Complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=^\\s*(def\\w*
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'clojure'
+setlocal filetype=clojure
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetClojureIndent()
+setlocal indentkeys=!,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
+setlocal keywordprg=:Doc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
+set list
+setlocal list
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=fireplace#omnicomplete
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en_gb
+setlocal statusline=%!airline#statusline(1)
+setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'clojure'
+setlocal syntax=clojure
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=80
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 021|
+wincmd w
+argglobal
+edit src/tic_tac_toe/human.clj
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
+smap <buffer> ( <Plug>FireplaceRecall
+nmap <buffer> gf <Plug>FireplaceTabeditFile
+nmap <buffer>  <Plug>FireplaceSplitFile
+nmap <buffer> f <Plug>FireplaceSplitFile
+nmap <buffer> gd <Plug>FireplaceDtabjump
+nmap <buffer> d <Plug>FireplaceDsplit
+nmap <buffer>  <Plug>FireplaceDsplit
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
+nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
+nmap <buffer> [d <Plug>FireplaceSource
+nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
+nmap <buffer> ]d <Plug>FireplaceSource
+nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
+nmap <buffer> cqc <Plug>FireplacePrompti
+nmap <buffer> cqp <Plug>FireplacePrompt
+nmap <buffer> cqq <Plug>FireplaceCountEdit
+nmap <buffer> cq <Plug>FireplaceEdit
+nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
+nmap <buffer> c1m <Plug>Fireplace1MacroExpand
+nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
+nmap <buffer> cm <Plug>FireplaceMacroExpand
+nmap <buffer> c!! <Plug>FireplaceCountFilter
+nmap <buffer> c! <Plug>FireplaceFilter
+nmap <buffer> cpp <Plug>FireplaceCountPrint
+nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
+nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+cmap <buffer>  <Plug><cpath>
+cmap <buffer>  <Plug><cfile>
+cmap <buffer> ( <Plug>FireplaceRecall
+imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=+2
+setlocal colorcolumn=+2
+setlocal comments=n:;
+setlocal commentstring=;\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=clojurecomplete#Complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=^\\s*(def\\w*
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'clojure'
+setlocal filetype=clojure
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetClojureIndent()
+setlocal indentkeys=!,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
+setlocal keywordprg=:Doc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
+set list
+setlocal list
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=fireplace#omnicomplete
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en_gb
+setlocal statusline=%!airline#statusline(2)
+setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'clojure'
+setlocal syntax=clojure
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=80
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 1 - ((0 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+1
+normal! 0
+wincmd w
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
+tabedit spec/tic_tac_toe/random_computer_spec.clj
+set splitbelow splitright
+wincmd _ | wincmd |
+vsplit
+1wincmd h
+wincmd w
+wincmd t
+set winminheight=1 winheight=1 winminwidth=1 winwidth=1
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
+argglobal
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
+smap <buffer> ( <Plug>FireplaceRecall
+nmap <buffer> gf <Plug>FireplaceTabeditFile
+nmap <buffer>  <Plug>FireplaceSplitFile
+nmap <buffer> f <Plug>FireplaceSplitFile
+nmap <buffer> gd <Plug>FireplaceDtabjump
+nmap <buffer> d <Plug>FireplaceDsplit
+nmap <buffer>  <Plug>FireplaceDsplit
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
+nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
+nmap <buffer> [d <Plug>FireplaceSource
+nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
+nmap <buffer> ]d <Plug>FireplaceSource
+nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
+nmap <buffer> cqc <Plug>FireplacePrompti
+nmap <buffer> cqp <Plug>FireplacePrompt
+nmap <buffer> cqq <Plug>FireplaceCountEdit
+nmap <buffer> cq <Plug>FireplaceEdit
+nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
+nmap <buffer> c1m <Plug>Fireplace1MacroExpand
+nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
+nmap <buffer> cm <Plug>FireplaceMacroExpand
+nmap <buffer> c!! <Plug>FireplaceCountFilter
+nmap <buffer> c! <Plug>FireplaceFilter
+nmap <buffer> cpp <Plug>FireplaceCountPrint
+nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
+nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+cmap <buffer>  <Plug><cpath>
+cmap <buffer>  <Plug><cfile>
+cmap <buffer> ( <Plug>FireplaceRecall
+imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=+2
+setlocal colorcolumn=+2
+setlocal comments=n:;
+setlocal commentstring=;\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=clojurecomplete#Complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=^\\s*(def\\w*
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'clojure'
+setlocal filetype=clojure
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetClojureIndent()
+setlocal indentkeys=!,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
+setlocal keywordprg=:Doc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
+set list
+setlocal list
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=fireplace#omnicomplete
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en_gb
+setlocal statusline=%!airline#statusline(1)
+setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'clojure'
+setlocal syntax=clojure
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=80
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal nowrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 12 - ((11 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+12
+normal! 027|
+wincmd w
+argglobal
+edit src/tic_tac_toe/random_computer.clj
+let s:cpo_save=&cpo
+set cpo&vim
+inoremap <buffer> <expr> <Del> PareditDel()
+inoremap <buffer> <expr> <BS> PareditBackspace(0)
+smap <buffer> ( <Plug>FireplaceRecall
+nmap <buffer> gf <Plug>FireplaceTabeditFile
+nmap <buffer>  <Plug>FireplaceSplitFile
+nmap <buffer> f <Plug>FireplaceSplitFile
+nmap <buffer> gd <Plug>FireplaceDtabjump
+nmap <buffer> d <Plug>FireplaceDsplit
+nmap <buffer>  <Plug>FireplaceDsplit
+vnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',1)
+nnoremap <buffer> <silent> ( :call PareditFindOpening('(',')',0)
+vnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',1)
+nnoremap <buffer> <silent> ) :call PareditFindClosing('(',')',0)
+nnoremap <buffer> <silent> ,S :call PareditSplice()|silent! call repeat#set(",S")
+vnoremap <buffer> <silent> ,W :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,W :call PareditWrap("(",")")|silent! call repeat#set(",W")
+nnoremap <buffer> <silent> ,J :call PareditJoin()|silent! call repeat#set(",J")
+nnoremap <buffer> <silent> ,O :call PareditSplit()|silent! call repeat#set(",O")
+nnoremap <buffer> <silent> ,> :call PareditMoveRight()|silent! call repeat#set(",>")
+nnoremap <buffer> <silent> ,< :call PareditMoveLeft()|silent! call repeat#set(",\<")
+vnoremap <buffer> <silent> ,w{ :call PareditWrapSelection("{","}")
+nnoremap <buffer> <silent> ,w{ :call PareditWrap("{","}")|silent! call repeat#set(",w{")
+vnoremap <buffer> <silent> ,w[ :call PareditWrapSelection("[","]")
+nnoremap <buffer> <silent> ,w[ :call PareditWrap("[","]")|silent! call repeat#set(",w[")
+nnoremap <buffer> <silent> ,I :call PareditRaise()|silent! call repeat#set(",I")
+nmap <buffer> <silent> ,<Down> d])%,S
+nmap <buffer> <silent> ,<Up> d[(,S
+vnoremap <buffer> <silent> ,w" :call PareditWrapSelection('"','"')
+nnoremap <buffer> <silent> ,w" :call PareditWrap('"','"')|silent! call repeat#set(",w\"")
+vnoremap <buffer> <silent> ,w( :call PareditWrapSelection("(",")")
+nnoremap <buffer> <silent> ,w( :call PareditWrap("(",")")|silent! call repeat#set(",w(")
+nnoremap <buffer> <silent> C v$:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> D v$:call PareditDelete(visualmode(),1)|silent! call repeat#set("D")
+nmap <buffer> K <Plug>FireplaceK
+nnoremap <buffer> <silent> P :call PareditPut("P")|silent! call repeat#set("P")
+nnoremap <buffer> <silent> S V:call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> X :call PareditEraseBck()|silent! call repeat#set("X")
+nnoremap <buffer> <silent> [[ :call PareditFindDefunBck()
+nmap <buffer> [d <Plug>FireplaceSource
+nmap <buffer> [ <Plug>FireplaceDjump
+nnoremap <buffer> <silent> ]] :call PareditFindDefunFwd()
+nmap <buffer> ]d <Plug>FireplaceSource
+nmap <buffer> ] <Plug>FireplaceDjump
+nnoremap <buffer> <silent> caw :call PareditChangeSpec('caw',1)
+nnoremap <buffer> <silent> ciw :call PareditChangeSpec('ciw',1)
+nnoremap <buffer> <silent> cb :call PareditChangeSpec('cb',0)
+nnoremap <buffer> <silent> cW :set opfunc=PareditChangeg@E
+nnoremap <buffer> <silent> cw :call PareditChangeSpec('cw',1)
+nnoremap <buffer> <silent> cc :call PareditChangeLines()
+vnoremap <buffer> <silent> c :call PareditChange(visualmode(),1)
+nnoremap <buffer> <silent> c :set opfunc=PareditChangeg@
+nmap <buffer> cqc <Plug>FireplacePrompti
+nmap <buffer> cqp <Plug>FireplacePrompt
+nmap <buffer> cqq <Plug>FireplaceCountEdit
+nmap <buffer> cq <Plug>FireplaceEdit
+nmap <buffer> c1mm <Plug>FireplaceCount1MacroExpand
+nmap <buffer> c1m <Plug>Fireplace1MacroExpand
+nmap <buffer> cmm <Plug>FireplaceCountMacroExpand
+nmap <buffer> cm <Plug>FireplaceMacroExpand
+nmap <buffer> c!! <Plug>FireplaceCountFilter
+nmap <buffer> c! <Plug>FireplaceFilter
+nmap <buffer> cpp <Plug>FireplaceCountPrint
+nmap <buffer> cp <Plug>FireplacePrint
+nnoremap <buffer> <silent> dd :call PareditDeleteLines()|silent! call repeat#set("dd")
+vnoremap <buffer> <silent> d :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> d :call PareditSetDelete(v:count)g@
+nmap <buffer> gf <Plug>FireplaceEditFile
+nnoremap <buffer> <silent> p :call PareditPut("p")|silent! call repeat#set("p")
+nnoremap <buffer> <silent> s :call PareditEraseFwd()i
+vnoremap <buffer> <silent> x :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> x :call PareditEraseFwd()|silent! call repeat#set("x")
+vnoremap <buffer> <silent> <Del> :call PareditDelete(visualmode(),1)
+nnoremap <buffer> <silent> <Del> :call PareditEraseFwd()
+cmap <buffer>  <Plug><cpath>
+cmap <buffer>  <Plug><cfile>
+cmap <buffer> ( <Plug>FireplaceRecall
+imap <buffer> ( <Plug>FireplaceRecall
+inoremap <buffer> <expr> " PareditInsertQuotes()
+inoremap <buffer> <expr> ( PareditInsertOpening('(',')')
+inoremap <buffer> <silent> ) =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('(',')'):let &ve=save_ve
+inoremap <buffer> <expr> [ PareditInsertOpening('[',']')
+inoremap <buffer> <silent> ] =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('[',']'):let &ve=save_ve
+inoremap <buffer> <expr> { PareditInsertOpening('{','}')
+inoremap <buffer> <silent> } =(pumvisible() ? "\<C-Y>" : ""):let save_ve=&ve:set ve=all:call PareditInsertClosing('{','}'):let &ve=save_ve
+let &cpo=s:cpo_save
+unlet s:cpo_save
+setlocal keymap=
+setlocal noarabic
+setlocal noautoindent
+setlocal backupcopy=
+setlocal nobinary
+setlocal nobreakindent
+setlocal breakindentopt=
+setlocal bufhidden=
+setlocal buflisted
+setlocal buftype=
+setlocal nocindent
+setlocal cinkeys=0{,0},0),:,0#,!^F,o,O,e
+setlocal cinoptions=
+setlocal cinwords=if,else,while,do,for,switch
+set colorcolumn=+2
+setlocal colorcolumn=+2
+setlocal comments=n:;
+setlocal commentstring=;\ %s
+setlocal complete=.,w,b,u,t,i
+setlocal concealcursor=
+setlocal conceallevel=0
+setlocal completefunc=clojurecomplete#Complete
+setlocal nocopyindent
+setlocal cryptmethod=
+setlocal nocursorbind
+setlocal nocursorcolumn
+set cursorline
+setlocal cursorline
+setlocal define=^\\s*(def\\w*
+setlocal dictionary=
+setlocal nodiff
+setlocal equalprg=
+setlocal errorformat=
+setlocal expandtab
+if &filetype != 'clojure'
+setlocal filetype=clojure
+endif
+setlocal fixendofline
+setlocal foldcolumn=0
+setlocal foldenable
+setlocal foldexpr=0
+setlocal foldignore=#
+setlocal foldlevel=0
+setlocal foldmarker={{{,}}}
+setlocal foldmethod=manual
+setlocal foldminlines=1
+setlocal foldnestmax=20
+setlocal foldtext=foldtext()
+setlocal formatexpr=fireplace#format(v:lnum,v:count,v:char)
+setlocal formatoptions=cq
+setlocal formatlistpat=^\\s*\\d\\+[\\]:.)}\\t\ ]\\s*
+setlocal formatprg=
+setlocal grepprg=
+setlocal iminsert=0
+setlocal imsearch=0
+setlocal include=
+setlocal includeexpr=
+setlocal indentexpr=GetClojureIndent()
+setlocal indentkeys=!,o,O
+setlocal noinfercase
+setlocal iskeyword=@,48-57,_,192-255,?,-,*,!,+,/,=,<,>,.,:,$
+setlocal keywordprg=:Doc
+setlocal nolinebreak
+setlocal nolisp
+setlocal lispwords=as->,binding,bound-fn,case,catch,cond->,cond->>,condp,def,definline,definterface,defmacro,defmethod,defmulti,defn,defn-,defonce,defprotocol,defrecord,defstruct,deftest,deftest-,deftype,doseq,dotimes,doto,extend,extend-protocol,extend-type,fn,for,if,if-let,if-not,if-some,let,letfn,locking,loop,ns,proxy,reify,set-test,testing,when,when-first,when-let,when-not,when-some,while,with-bindings,with-in-str,with-local-vars,with-open,with-precision,with-redefs,with-redefs-fn,with-test
+set list
+setlocal list
+setlocal makeencoding=
+setlocal makeprg=
+setlocal matchpairs=(:),{:},[:]
+setlocal modeline
+setlocal modifiable
+setlocal nrformats=bin,octal,hex
+set number
+setlocal number
+setlocal numberwidth=4
+setlocal omnifunc=fireplace#omnicomplete
+setlocal path=~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/spec,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/src,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/dev-resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/resources,~/Library/Mobile\\\ Documents/com~apple~CloudDocs/Projects/8th\\\ Light/clojure/tic_tac_toe/target/classes,~/.m2/repository/org/clojure/clojure/1.8.0/clojure-1.8.0.jar,~/.m2/repository/org/clojure/tools.nrepl/0.2.12/tools.nrepl-0.2.12.jar,~/.m2/repository/clojure-complete/clojure-complete/0.2.4/clojure-complete-0.2.4.jar,~/.m2/repository/speclj/speclj/3.3.2/speclj-3.3.2.jar,~/.m2/repository/fresh/fresh/1.1.2/fresh-1.1.2.jar,~/.m2/repository/mmargs/mmargs/1.2.0/mmargs-1.2.0.jar,~/.m2/repository/trptcolin/versioneer/0.1.1/versioneer-0.1.1.jar
+setlocal nopreserveindent
+setlocal nopreviewwindow
+setlocal quoteescape=\\
+setlocal noreadonly
+setlocal norelativenumber
+setlocal norightleft
+setlocal rightleftcmd=search
+setlocal noscrollbind
+setlocal shiftwidth=2
+setlocal noshortname
+setlocal signcolumn=auto
+setlocal nosmartindent
+setlocal softtabstop=2
+setlocal nospell
+setlocal spellcapcheck=[.?!]\\_[\\])'\"\	\ ]\\+
+setlocal spellfile=
+setlocal spelllang=en_gb
+setlocal statusline=%!airline#statusline(2)
+setlocal suffixesadd=.clj,.cljc,.cljx,.cljs,.java
+setlocal noswapfile
+setlocal synmaxcol=3000
+if &syntax != 'clojure'
+setlocal syntax=clojure
+endif
+setlocal tabstop=2
+setlocal tagcase=
+setlocal tags=
+setlocal textwidth=80
+setlocal thesaurus=
+setlocal noundofile
+setlocal undolevels=-123456
+setlocal nowinfixheight
+setlocal nowinfixwidth
+setlocal wrap
+setlocal wrapmargin=0
+silent! normal! zE
+let s:l = 9 - ((8 * winheight(0) + 25) / 50)
+if s:l < 1 | let s:l = 1 | endif
+exe s:l
+normal! zt
+9
+normal! 014|
+wincmd w
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 119 + 157) / 314)
+exe 'vert 2resize ' . ((&columns * 194 + 157) / 314)
+tabnext 7
 set stal=1
 if exists('s:wipebuf')
   silent exe 'bwipe ' . s:wipebuf

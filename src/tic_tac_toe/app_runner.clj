@@ -18,8 +18,8 @@
 
 (defn play-again [selection]
   (if (= selection play-again-selection)
-    (play))
-    (output/print-message (output/exiting)))
+    (play)
+    (output/print-message (output/exiting))))
 
 (defn end-of-game [board]
   (output/print-message (output/format-board board))

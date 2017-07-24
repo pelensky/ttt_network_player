@@ -31,6 +31,11 @@
     (should= "O"
       (check-value-of-space 5 [0 5])))
 
+(describe "Winning Positions"
+          (it "gets all rows"
+              (should= [[0 1 2] [3 4 5] [6 7 8]]
+                       (rows))))
+
 (describe "Split Board"
   (it "creates a vector with moves - one"
     (should= ["X" nil nil nil nil nil nil nil nil]

@@ -5,11 +5,11 @@
 (defn- check-if-spaces-are-available [board]
   (for [space (range (* number-of-rows number-of-rows))]
     (if
-      (not (some (partial = space) board)) 
+      (not (some (partial = space) board))
       space)))
 
 (defn get-available-spaces [board]
-  (remove nil? 
+  (remove nil?
     (vec (check-if-spaces-are-available board) )))
 
 (defn choose-space [board]

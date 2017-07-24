@@ -63,3 +63,7 @@
 
 (defn game-over? [board]
   (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))
+
+(defn rows []
+  (map (fn [row-start] (range row-start (+ row-start number-of-rows)))
+       (mapv (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
