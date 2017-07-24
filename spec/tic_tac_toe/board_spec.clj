@@ -4,19 +4,19 @@
 
 (describe "Taking turns"
           (it "X plays"
-              (should= [1]
+              (should= {:size 3 :board [1]}
                        (place-marker 1 {:size 3 :board[]})))
 
           (it "X play in a different space"
-              (should= [0]
+              (should= {:size 3 :board [0]}
                        (place-marker 0 {:size 3 :board[]})))
 
           (it "O play after X"
-              (should= [8 1]
+              (should= {:size 3 :board [8 1]}
                        (place-marker 1 {:size 3 :board [8]} )))
 
           (it "rejects duplicate values"
-              (should= [0 1 2]
+              (should= {:size 3 :board [0 1 2]}
                        (place-marker 0 {:size 3 :board [0 1 2]})))
 
           (it "check value of empty space"

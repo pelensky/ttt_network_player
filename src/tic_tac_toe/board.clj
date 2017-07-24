@@ -7,10 +7,11 @@
   (get board-state :size))
 
 (defn place-marker [space board-state]
-  (let [board (get-board board-state)]
+  (let [board (get-board board-state)
+        size (get-size board-state)]
   (if (not (.contains board space))
-    (conj board space)
-    board)))
+    {:size size :board (conj board space)}
+    {:size size :board board})))
 
 (defn check-value-of-space [space board]
   (cond
