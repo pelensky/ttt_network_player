@@ -41,29 +41,6 @@
            (inc current-row-index)
            (dec current-column-index))))
 
-(defn winning-scenarios [board]
-  (let [full-board (convert-board-to-full-board board)
-        rows (split-board-into-rows full-board)
-        columns (split-board-into-columns rows)
-        left-diagonal (split-left-diagonal rows [] 0)
-        right-diagonal (split-right-diagonal rows [] 0 (- number-of-rows 1)) ]
-    (into [] (concat rows columns left-diagonal right-diagonal))))
-
-(defn line-won-by? [marker line]
-  (every? (partial = marker) line))
-
-(defn game-won-by? [marker board]
-  (some?
-    (some true?
-          (for [line (winning-scenarios board)]
-            (line-won-by? marker line)))))
-
-(defn game-tied? [board]
-  (and (= (* number-of-rows number-of-rows) (count board)) (not (game-won-by? "X" board)) (not (game-won-by? "O" board))))
-
-(defn game-over? [board]
-  (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))
-
 (defn rows []
   (mapv (fn [row-start] (range row-start (+ row-start number-of-rows)))
        (mapv (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
@@ -88,4 +65,19 @@
   (let [full-board (convert-board-to-full-board board)]
   (for [scenario (winning-positions)]
     (map #(get full-board %) scenario))))
+
+(defn line-won-by? [marker line]
+  (every? (partial = marker) line))
+
+(defn game-won-by? [marker board]
+  (some?
+    (some true?
+          (for [line (winning-scenarios board)]
+            (line-won-by? marker line)))))
+
+(defn game-tied? [board]
+  (and (= (* number-of-rows number-of-rows) (count board)) (not (game-won-by? "X" board)) (not (game-won-by? "O" board))))
+
+(defn game-over? [board]
+  (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))
 
