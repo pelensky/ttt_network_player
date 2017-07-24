@@ -1,9 +1,9 @@
 (ns tic-tac-toe.board)
 
-(defn- get-board [board-state]
+(defn get-board [board-state]
   (get board-state :board))
 
-(defn- get-size [board-state]
+(defn get-size [board-state]
   (get board-state :size))
 
 (defn place-marker [space board-state]
@@ -24,13 +24,6 @@
       (vec
         (for [space (range (* size size))]
           (check-value-of-space space board)))))
-
-(defn split-board-into-rows [board-state]
-  (let [full-board (convert-board-to-full-board board-state)
-        size (get-size board-state)]
-  (vec
-    ( for [row (partition size full-board)]
-      (vec row)))))
 
 (defn rows [size]
   (mapv (fn [row-start] (range row-start (+ row-start size)))

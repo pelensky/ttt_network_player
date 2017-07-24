@@ -58,14 +58,6 @@
               (should= ["X" "X" "O" "O" "O" "X" "X" nil nil]
                        (convert-board-to-full-board {:size 3 :board [0 4 1 2 6 3 5]})))
 
-          (it "splits the vector into three"
-              (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
-                       (split-board-into-rows {:size 3 :board [0 2 1 3 6 4 5]})))
-
-          (it "splits an empty board into three"
-              (should= [[nil nil nil] [nil nil nil] [nil nil nil]]
-                       (split-board-into-rows {:size 3 :board []})))
-
           (it "gets row 1"
               (should-contain ["X" "X" "O"]
                               (winning-scenarios {:size 3 :board [0 4 1 2 6 3 5]})))
