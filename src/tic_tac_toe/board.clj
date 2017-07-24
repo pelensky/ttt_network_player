@@ -30,24 +30,24 @@
   (if (>= current-index (count rows))
     (conj [] accumulator)
     (recur rows
-      (conj accumulator (get ( get rows current-index) current-index))
-      (inc current-index))))
+           (conj accumulator (get ( get rows current-index) current-index))
+           (inc current-index))))
 
 (defn- split-right-diagonal [rows accumulator current-row-index current-column-index]
   (if (>= current-row-index (count rows))
     (conj [] accumulator)
     (recur rows
-      (conj accumulator (get (get rows current-row-index) current-column-index))
-       (inc current-row-index)
-        (dec current-column-index))))
+           (conj accumulator (get (get rows current-row-index) current-column-index))
+           (inc current-row-index)
+           (dec current-column-index))))
 
 (defn winning-scenarios [board]
-    (let [full-board (convert-board-to-full-board board)
-          rows (split-board-into-rows full-board)
-          columns (split-board-into-columns rows)
-          left-diagonal (split-left-diagonal rows [] 0)
-          right-diagonal (split-right-diagonal rows [] 0 (- number-of-rows 1)) ]
-            (into [] (concat rows columns left-diagonal right-diagonal))))
+  (let [full-board (convert-board-to-full-board board)
+        rows (split-board-into-rows full-board)
+        columns (split-board-into-columns rows)
+        left-diagonal (split-left-diagonal rows [] 0)
+        right-diagonal (split-right-diagonal rows [] 0 (- number-of-rows 1)) ]
+    (into [] (concat rows columns left-diagonal right-diagonal))))
 
 (defn line-won-by? [marker line]
   (every? (partial = marker) line))
@@ -55,8 +55,8 @@
 (defn game-won-by? [marker board]
   (some?
     (some true?
-     (for [line (winning-scenarios board)]
-      (line-won-by? marker line)))))
+          (for [line (winning-scenarios board)]
+            (line-won-by? marker line)))))
 
 (defn game-tied? [board]
   (and (= (* number-of-rows number-of-rows) (count board)) (not (game-won-by? "X" board)) (not (game-won-by? "O" board))))
@@ -65,15 +65,21 @@
   (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))
 
 (defn rows []
-  (mapv (fn [row-start] (range row-start (+ row-start number-of-rows)))
-       (mapv (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
+  (map (fn [row-start] (range row-start (+ row-start number-of-rows)))
+        (map (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
 
 (defn columns []
-  (mapv (fn [starting-index] (range starting-index (* number-of-rows number-of-rows) number-of-rows))
-       (range number-of-rows)))
+  (map (fn [starting-index] (range starting-index (* number-of-rows number-of-rows) number-of-rows))
+        (range number-of-rows)))
 
 (defn left-diagonal []
   (range 0 (* number-of-rows number-of-rows) (inc number-of-rows)))
 
 (defn right-diagonal []
   (range (dec number-of-rows) (dec (* number-of-rows number-of-rows)) (dec number-of-rows)))
+
+(defn diagonals []
+  [(left-diagonal) (right-diagonal)])
+
+(defn winning-positions []
+  (into [] (concat (rows) (columns) (diagonals) )))
