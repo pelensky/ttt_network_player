@@ -10,7 +10,7 @@
 
 (defn get-available-spaces [board]
   (remove nil?
-    (vec (check-if-spaces-are-available board) )))
+          (vec (check-if-spaces-are-available board) )))
 
 (defn choose-space [board]
   (rand-nth (get-available-spaces board)))

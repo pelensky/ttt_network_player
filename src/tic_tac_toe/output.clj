@@ -35,7 +35,7 @@
 (defn format-board [board-state]
   (let [formatted (format-rows board-state)]
     (str "  A | B | C\n"
-      (clojure.string/join "------------\n" formatted))))
+         (clojure.string/join "------------\n" formatted))))
 
 (defn- tied-game []
   "Game Tied")
@@ -49,9 +49,9 @@
 
 (defn game-over [board-state]
   (str "Game Over\n"
-    (if (ttt-board/game-tied? board-state)
-      (tied-game)
-      (won-game board-state))))
+       (if (ttt-board/game-tied? board-state)
+         (tied-game)
+         (won-game board-state))))
 
 (defn player-type [marker]
   (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer"))

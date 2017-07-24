@@ -29,9 +29,9 @@
 
 (defn current-player [board-state players]
   (let [board (ttt-board/get-board board-state)]
-  (if (even? (count board))
-    (get players player-x)
-    (get players player-o))))
+    (if (even? (count board))
+      (get players player-x)
+      (get players player-o))))
 
 (defn single-turn [board-state players]
   (let [player (current-player board-state players)
