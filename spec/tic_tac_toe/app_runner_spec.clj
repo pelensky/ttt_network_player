@@ -35,17 +35,17 @@
         (play)))))
 
   (it "single turn returns board"
-    (should= [3]
+    (should= {:size 3 :board [3]}
       (with-in-str "A2"
-      (single-turn [] [:human :human]))))
+      (single-turn {:size 3 :board []} [:human :human]))))
 
   (it "finds the current player type"
     (should= :human
-      (current-player [] [:human :computer])))
+      (current-player {:size 3 :board []} [:human :computer])))
 
   (it "finds a computer player"
     (should= :computer
-      (current-player [0] [:human :computer])))
+      (current-player {:size 3 :board [1]} [:human :computer])))
 
   (it "plays until the game is over when two computers play each other"
     (should-contain "Game Over"
