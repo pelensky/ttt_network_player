@@ -65,5 +65,9 @@
   (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))
 
 (defn rows []
-  (map (fn [row-start] (range row-start (+ row-start number-of-rows)))
+  (mapv (fn [row-start] (range row-start (+ row-start number-of-rows)))
        (mapv (fn [first-row] (* first-row number-of-rows)) (range number-of-rows))))
+
+(defn columns []
+  (mapv (fn [starting-index] (range starting-index (* number-of-rows number-of-rows) number-of-rows))
+       (range number-of-rows)))

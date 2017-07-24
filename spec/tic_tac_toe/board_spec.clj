@@ -34,7 +34,11 @@
 (describe "Winning Positions"
           (it "gets all rows"
               (should= [[0 1 2] [3 4 5] [6 7 8]]
-                       (rows))))
+                       (rows)))
+
+          (it "gets all columns"
+              (should= [[0 3 6] [1 4 7] [2 5 8]]
+                       (columns))))
 
 (describe "Split Board"
   (it "creates a vector with moves - one"
