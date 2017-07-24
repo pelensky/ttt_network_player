@@ -74,3 +74,6 @@
 
 (defn left-diagonal []
   (range 0 (* number-of-rows number-of-rows) (inc number-of-rows)))
+
+(defn right-diagonal []
+  (range (dec number-of-rows) (dec (* number-of-rows number-of-rows)) (dec number-of-rows)))

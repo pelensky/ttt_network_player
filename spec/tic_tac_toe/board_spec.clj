@@ -42,7 +42,11 @@
 
           (it "gets the left diagonal"
               (should= [0 4 8]
-                       (left-diagonal))))
+                       (left-diagonal)))
+
+          (it "gets the right diagonal"
+              (should= [2 4 6]
+                       (right-diagonal))))
 
 (describe "Split Board"
   (it "creates a vector with moves - one"
