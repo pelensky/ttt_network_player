@@ -1,11 +1,17 @@
 (ns tic-tac-toe.board)
 
-(def number-of-rows 3)
+(defn get-board [board-state]
+  (get board-state :board))
 
-(defn place-marker [space board]
+(defn get-size [board-state]
+  (get board-state :size))
+
+(defn place-marker [space board-state]
+  (let [board (get-board board-state)
+        size (get-size board-state)]
   (if (not (.contains board space))
-    (conj board space)
-    board))
+    {:size size :board (conj board space)}
+    {:size size :board board})))
 
 (defn check-value-of-space [space board]
   (cond
@@ -13,53 +19,53 @@
     (even? (.indexOf board space)) "X"
     (odd?  (.indexOf board space)) "O"))
 
-(defn convert-board-to-full-board [board]
-  (vec
-    (for [space (range (* number-of-rows number-of-rows))]
-      (check-value-of-space space board))))
+(defn convert-board-to-full-board [board-state]
+  (let [board (get-board board-state)
+        size (get-size board-state)]
+      (vec
+        (for [space (range (* size size))]
+          (check-value-of-space space board)))))
 
-(defn split-board-into-rows [full-board]
-  (vec
-    ( for [row (partition number-of-rows full-board)]
-      (vec row))))
+(defn rows [size]
+  (mapv (fn [row-start] (range row-start (+ row-start size)))
+       (mapv (fn [first-row] (* first-row size)) (range size))))
 
-(defn- split-board-into-columns [rows]
-  (apply mapv vector rows))
+(defn columns [size]
+  (mapv (fn [starting-index] (range starting-index (* size size) size))
+       (range size)))
 
-(defn- split-left-diagonal [rows accumulator current-index]
-  (if (>= current-index (count rows))
-    (conj [] accumulator)
-    (recur rows
-      (conj accumulator (get ( get rows current-index) current-index))
-      (inc current-index))))
+(defn left-diagonal [size]
+  (range 0 (* size size) (inc size)))
 
-(defn- split-right-diagonal [rows accumulator current-row-index current-column-index]
-  (if (>= current-row-index (count rows))
-    (conj [] accumulator)
-    (recur rows
-      (conj accumulator (get (get rows current-row-index) current-column-index))
-       (inc current-row-index)
-        (dec current-column-index))))
+(defn right-diagonal [size]
+  (range (dec size) (dec (* size size)) (dec size)))
 
-(defn winning-scenarios [board]
-    (let [full-board (convert-board-to-full-board board)
-          rows (split-board-into-rows full-board)
-          columns (split-board-into-columns rows)
-          left-diagonal (split-left-diagonal rows [] 0)
-          right-diagonal (split-right-diagonal rows [] 0 (- number-of-rows 1)) ]
-            (into [] (concat rows columns left-diagonal right-diagonal))))
+(defn diagonals [size]
+  [(left-diagonal size) (right-diagonal size)])
+
+(defn winning-positions [size]
+  (into [] (concat (rows size) (columns size) (diagonals size) )))
+
+(defn winning-scenarios [board-state]
+  (let [size (get-size board-state)
+        full-board (convert-board-to-full-board board-state)]
+  (for [scenario (winning-positions size)]
+    (map #(get full-board %) scenario))))
 
 (defn line-won-by? [marker line]
   (every? (partial = marker) line))
 
-(defn game-won-by? [marker board]
+(defn game-won-by? [marker board-state]
   (some?
     (some true?
-     (for [line (winning-scenarios board)]
-      (line-won-by? marker line)))))
+          (for [line (winning-scenarios board-state)]
+            (line-won-by? marker line)))))
 
-(defn game-tied? [board]
-  (and (= (* number-of-rows number-of-rows) (count board)) (not (game-won-by? "X" board)) (not (game-won-by? "O" board))))
+(defn game-tied? [board-state]
+   (let [board (get-board board-state)
+        size (get-size board-state)]
+  (and (= (* size size) (count board)) (not (game-won-by? "X" board-state)) (not (game-won-by? "O" board-state)))))
 
-(defn game-over? [board]
-  (or (game-won-by? "X" board) (game-won-by? "O" board) (game-tied? board)))
+(defn game-over? [board-state]
+  (or (game-won-by? "X" board-state) (game-won-by? "O" board-state) (game-tied? board-state)))
+

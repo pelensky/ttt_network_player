@@ -18,30 +18,35 @@
 
 (defn play-again [selection]
   (if (= selection play-again-selection)
-    (play))
-    (output/print-message (output/exiting)))
+    (play)
+    (output/print-message (output/exiting))))
 
-(defn end-of-game [board]
-  (output/print-message (output/format-board board))
-  (output/print-message (output/game-over board))
+(defn end-of-game [board-state]
+  (output/print-message (output/format-board board-state))
+  (output/print-message (output/game-over board-state))
   (output/print-message (output/play-again))
   (play-again (input/get-number)))
 
-(defn current-player [board players]
-  (if (even? (count board))
-    (get players player-x)
-    (get players player-o)))
+(defn current-player [board-state players]
+  (let [board (ttt-board/get-board board-state)]
+    (if (even? (count board))
+      (get players player-x)
+      (get players player-o))))
 
-(defn single-turn [board players]
-  (let [player (current-player board players)]
-    (if (= player :human)
-      (ttt-board/place-marker (human/choose-space) board)
-      (ttt-board/place-marker (random-computer/choose-space board) board))))
+(defn- player-move [board player]
+  (if (= player :human)
+    (human/choose-space)
+    (random-computer/choose-space board)))
 
-(defn game-runner [board players]
-  (output/print-message (output/take-turn board))
-  (output/print-message (output/format-board board))
-  (let [updated-board (single-turn board players)]
+(defn single-turn [board-state players]
+  (let [player (current-player board-state players)
+        board (ttt-board/get-board board-state)]
+      (ttt-board/place-marker (player-move board player) board-state)))
+
+(defn game-runner [board-state players]
+  (output/print-message (output/take-turn board-state))
+  (output/print-message (output/format-board board-state))
+  (let [updated-board (single-turn board-state players)]
     (if (ttt-board/game-over? updated-board)
       (end-of-game updated-board)
       (recur updated-board players))))
@@ -50,7 +55,7 @@
   (output/print-message (output/player-type (if (empty? players) "X" "O")))
   (let [updated-players (player-type/select-players players (player-type/select-player (input/get-number)))]
     (if (= max-players (count updated-players ))
-      (game-runner [] updated-players)
+      (game-runner {:size 3 :board []} updated-players)
       (recur updated-players))))
 
 (defn play []
