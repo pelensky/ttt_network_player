@@ -33,12 +33,15 @@
       (get players player-x)
       (get players player-o))))
 
+(defn- player-move [board player]
+  (if (= player :human)
+    (human/choose-space)
+    (random-computer/choose-space board)))
+
 (defn single-turn [board-state players]
   (let [player (current-player board-state players)
         board (ttt-board/get-board board-state)]
-    (if (= player :human)
-      (ttt-board/place-marker (human/choose-space) board-state)
-      (ttt-board/place-marker (random-computer/choose-space board) board-state))))
+      (ttt-board/place-marker (player-move board player) board-state)))
 
 (defn game-runner [board-state players]
   (output/print-message (output/take-turn board-state))
