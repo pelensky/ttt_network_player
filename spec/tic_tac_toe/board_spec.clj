@@ -38,7 +38,11 @@
 
           (it "gets all columns"
               (should= [[0 3 6] [1 4 7] [2 5 8]]
-                       (columns))))
+                       (columns)))
+
+          (it "gets the left diagonal"
+              (should= [0 4 8]
+                       (left-diagonal))))
 
 (describe "Split Board"
   (it "creates a vector with moves - one"

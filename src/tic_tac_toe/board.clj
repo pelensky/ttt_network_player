@@ -71,3 +71,6 @@
 (defn columns []
   (mapv (fn [starting-index] (range starting-index (* number-of-rows number-of-rows) number-of-rows))
        (range number-of-rows)))
+
+(defn left-diagonal []
+  (range 0 (* number-of-rows number-of-rows) (inc number-of-rows)))
