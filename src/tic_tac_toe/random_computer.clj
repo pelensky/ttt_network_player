@@ -1,4 +1,5 @@
-(ns tic-tac-toe.random-computer)
+(ns tic-tac-toe.random-computer
+  (:require [tic-tac-toe.board :as ttt-board]))
 
 (def number-of-rows 3)
 
@@ -12,7 +13,8 @@
   (remove nil?
           (vec (check-if-spaces-are-available board) )))
 
-(defn choose-space [board]
-  (rand-nth (get-available-spaces board)))
+(defn choose-space [board-state]
+  (let [board (ttt-board/get-board board-state)]
+  (rand-nth (get-available-spaces board))))
 
 

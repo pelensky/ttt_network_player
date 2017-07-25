@@ -34,10 +34,10 @@
   (mapv (fn [starting-index] (range starting-index (* size size) size))
        (range size)))
 
-(defn left-diagonal [size]
+(defn- left-diagonal [size]
   (range 0 (* size size) (inc size)))
 
-(defn right-diagonal [size]
+(defn- right-diagonal [size]
   (range (dec size) (dec (* size size)) (dec size)))
 
 (defn diagonals [size]
