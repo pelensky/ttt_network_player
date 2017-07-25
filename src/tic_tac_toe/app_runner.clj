@@ -3,6 +3,7 @@
             [tic-tac-toe.player-type :as player-type]
             [tic-tac-toe.human :as human]
             [tic-tac-toe.random-computer :as random-computer]
+            [tic-tac-toe.unbeatable-computer :as unbeatable-computer]
             [tic-tac-toe.input :as input]
             [tic-tac-toe.output :as output]))
 
@@ -34,9 +35,10 @@
       (get players player-o))))
 
 (defn- player-move [board-state player]
-  (if (= player :human)
-    (human/choose-space)
-    (random-computer/choose-space board-state)))
+  (case player
+    :human (human/choose-space)
+    :random-computer (random-computer/choose-space board-state)
+    :unbeatable-computer (unbeatable-computer/choose-space board-state)))
 
 (defn single-turn [board-state players]
   (let [player (current-player board-state players)]

@@ -17,11 +17,11 @@
 
           (it "prompts X to take turn"
               (should-contain "X, take your turn"
-                              (with-out-str (print-message (take-turn [])))))
+                              (with-out-str (print-message (take-turn {:size 3 :board [] })))))
 
           (it "prompts O to take their turn"
               (should-contain "O, take your turn"
-                              (with-out-str (print-message (take-turn [0])))))
+                              (with-out-str (print-message (take-turn {:size 3 :board [0]} )))))
 
           (it "splits the board into three"
               (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
