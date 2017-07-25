@@ -16,6 +16,10 @@
               (should= 8
                        (choose-space {:size 3 :board [0 1 4]})))
 
+          (it "blocks a win -x "
+              (should= 3
+                       (choose-space {:size 3 :board [0 8 6]})))
+
           (it "finds the marker if X"
               (should= "X"
                        (find-computer-marker {:size 3 :board []})))
