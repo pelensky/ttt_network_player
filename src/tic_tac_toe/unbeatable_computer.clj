@@ -3,19 +3,18 @@
 
 (declare minimax)
 
-(defn score-scenarios [board-state marker]
+(defn score-scenarios [board-state depth marker]
   (if (ttt-board/game-tied? board-state)
     0
     (if ( ttt-board/game-won-by? marker board-state)
-      10
-      -10)))
+      (- 10 depth)
+      (- -10 depth))))
 
 (defn best-space [best-score]
   (key (apply max-key val (reduce conj {} best-score))))
 
 (defn top-score [best-score]
-  0)
-;  (val (apply max-key val best-score)))
+  (val (apply max-key val (reduce conj {}  best-score))))
 
 (defn update-best-score [board-state depth best-score marker]
    (for [space (ttt-board/find-available-spaces board-state)]
@@ -30,7 +29,7 @@
 
 (defn minimax [board-state depth best-score marker]
     (if ( ttt-board/game-over? board-state)
-      (score-scenarios board-state marker)
+      (score-scenarios board-state depth marker)
       (check-possible-moves board-state depth best-score marker)))
 
 (defn find-computer-marker [board-state]
