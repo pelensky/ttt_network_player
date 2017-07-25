@@ -12,6 +12,10 @@
               (should= 6
                        (choose-space {:size 3 :board [0 1 2 3 4 8]})))
 
+          (it "wins the game"
+              (should= 2
+                       (choose-space {:size 3 :board [0 4 1 6]})))
+
           (it "blocks a win"
               (should= 8
                        (choose-space {:size 3 :board [0 1 4]})))
