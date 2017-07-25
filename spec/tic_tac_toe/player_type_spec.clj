@@ -8,6 +8,14 @@
               (should= :human
                        (select-player 1)))
 
+          (it "selects random-computer"
+              (should= :random-computer
+                       (select-player 2)))
+
+          (it "selects unbeatable-computer"
+              (should= :unbeatable-computer
+                       (select-player 3)))
+
           (it "puts the first player into a vector"
               (should= [:human]
                        (select-players [] :human)))
