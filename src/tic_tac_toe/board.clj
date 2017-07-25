@@ -69,3 +69,15 @@
 (defn game-over? [board-state]
   (or (game-won-by? "X" board-state) (game-won-by? "O" board-state) (game-tied? board-state)))
 
+(defn- check-if-spaces-are-available [board-state]
+   (let [board (get-board board-state)
+        size (get-size board-state)]
+      (for [space (range (* size size))]
+        (if
+          (not (some (partial = space) board))
+          space))))
+
+(defn find-available-spaces [board-state]
+  (remove nil?
+          (vec (check-if-spaces-are-available board-state) )))
+
