@@ -8,6 +8,10 @@
               (should= 7
                        (choose-space { :size 3 :board [0 1 2 3 4 8 5 6]})))
 
+          (it "chooses the winning space"
+              (should= 6
+                       (choose-space {:size 3 :board [0 1 2 3 4 8]})))
+
           (it "finds the marker if X"
               (should= "X"
                        (find-computer-marker {:size 3 :board []})))

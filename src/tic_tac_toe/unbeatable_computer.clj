@@ -1,8 +1,37 @@
 (ns tic-tac-toe.unbeatable-computer
   (:require [tic-tac-toe.board :as ttt-board]))
 
-( defn minimax [board-state depth best-score marker]
-   7 )
+(declare minimax)
+
+(defn score-scenarios [board-state marker]
+  (if (ttt-board/game-tied? board-state)
+    0
+    (if ( ttt-board/game-won-by? marker board-state)
+      10
+      -10)))
+
+(defn best-space [best-score]
+  (key (apply max-key val (reduce conj {} best-score))))
+
+(defn top-score [best-score]
+  0)
+;  (val (apply max-key val best-score)))
+
+(defn update-best-score [board-state depth best-score marker]
+   (for [space (ttt-board/find-available-spaces board-state)]
+      (assoc best-score space (minimax (ttt-board/place-marker space board-state) (inc depth) best-score marker) )))
+
+(defn check-possible-moves [board-state depth best-score marker]
+    (let [updated-best-score (update-best-score board-state depth best-score marker)]
+      (println updated-best-score )
+          ( if (= depth 0)
+            (best-space updated-best-score)
+            (top-score updated-best-score))))
+
+(defn minimax [board-state depth best-score marker]
+    (if ( ttt-board/game-over? board-state)
+      (score-scenarios board-state marker)
+      (check-possible-moves board-state depth best-score marker)))
 
 (defn find-computer-marker [board-state]
   (if ( #(even? ( count %)) (get board-state :board))
@@ -10,4 +39,4 @@
     "O"))
 
 (defn choose-space [board-state]
-  (minimax board-state 0 {} (find-computer-marker board-state)))
+  (minimax board-state 0 (hash-map) (find-computer-marker board-state)))
