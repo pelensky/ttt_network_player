@@ -54,7 +54,7 @@
          (won-game board-state))))
 
 (defn player-type [marker]
-  (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer"))
+  (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer\n" "3) Unbeatable Computer"))
 
 (defn exiting []
   "Exiting")

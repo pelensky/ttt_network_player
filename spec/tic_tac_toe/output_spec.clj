@@ -12,7 +12,7 @@
                               (with-out-str(print-message (player-type "X")))))
 
           (it "asks for player type for O"
-              (should-contain "Select player type for O\n1) Human\n2) Random Computer"
+              (should-contain "Select player type for O\n1) Human\n2) Random Computer\n3) Unbeatable Computer"
                               (with-out-str(print-message (player-type "O")))))
 
           (it "prompts X to take turn"
