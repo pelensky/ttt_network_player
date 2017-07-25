@@ -22,7 +22,6 @@
 
 (defn check-possible-moves [board-state depth best-score marker]
     (let [updated-best-score (update-best-score board-state depth best-score marker)]
-      (println updated-best-score )
           ( if (= depth 0)
             (best-space updated-best-score)
             (top-score updated-best-score))))
