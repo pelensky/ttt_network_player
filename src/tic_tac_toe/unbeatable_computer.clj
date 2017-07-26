@@ -15,7 +15,7 @@
       (/ -1000 depth))))
 
 (defn best-space-and-score [board-state scores marker]
- (apply max-key val (reduce conj {} scores )))
+ (apply max-key val scores))
 
 (defn best-space [board-state scores marker]
   (key (best-space-and-score board-state scores marker)))
