@@ -34,6 +34,11 @@
                               (with-out-str (with-in-str "1\n1\na1\nc1\nb2\nc2\na3\nc3\n2"
                                               (play)))))
 
+          (xit "nobody wins when two computers play"
+              (should-contain "Game Tied"
+                              (with-out-str (with-in-str "3\n3\n2\n"
+                                              (play)))))
+
           (it "single turn returns board"
               (should= {:size 3 :board [3]}
                        (with-in-str "A2"

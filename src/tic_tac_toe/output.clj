@@ -4,8 +4,8 @@
 (defn welcome []
   "Tic Tac Toe")
 
-(defn take-turn [board]
-  (str (if (even? (count board)) "X" "O") ", take your turn"))
+(defn take-turn [board-state]
+  (str (if (even? (count (ttt-board/get-board board-state))) "X" "O") ", take your turn"))
 
 (defn- update-space [value]
   (if (nil? value)
@@ -54,7 +54,7 @@
          (won-game board-state))))
 
 (defn player-type [marker]
-  (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer"))
+  (str "Select player type for " marker "\n" "1) Human\n" "2) Random Computer\n" "3) Unbeatable Computer"))
 
 (defn exiting []
   "Exiting")

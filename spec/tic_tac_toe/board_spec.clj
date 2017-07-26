@@ -171,3 +171,9 @@
               (should= true
                        (game-over? {:size 3 :board [0 1 2 3 4 6 5 8 7]}))))
 
+(describe "Available spaces"
+
+          (it "finds the available spaces"
+              (should= [1 2 3 4 5 6 7 8]
+                       (find-available-spaces {:size 3 :board  [0]}))))
+

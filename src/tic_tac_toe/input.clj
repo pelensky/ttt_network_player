@@ -6,7 +6,7 @@
    "A2" 3 "B2" 4 "C2" 5
    "A3" 6 "B3" 7 "C3" 8})
 
-(def valid-options [1 2])
+(def valid-options [1 2 3])
 
 (defn- convert-coordinate-to-space []
   (get conversions
@@ -21,7 +21,7 @@
       (recur))))
 
 (defn validate-integer []
-  (or (try 
+  (or (try
         (Integer/parseInt (read-line))
         (catch Exception e))
       (recur)))

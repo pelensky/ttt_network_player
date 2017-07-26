@@ -12,16 +12,16 @@
                               (with-out-str(print-message (player-type "X")))))
 
           (it "asks for player type for O"
-              (should-contain "Select player type for O\n1) Human\n2) Random Computer"
+              (should-contain "Select player type for O\n1) Human\n2) Random Computer\n3) Unbeatable Computer"
                               (with-out-str(print-message (player-type "O")))))
 
           (it "prompts X to take turn"
               (should-contain "X, take your turn"
-                              (with-out-str (print-message (take-turn [])))))
+                              (with-out-str (print-message (take-turn {:size 3 :board [] })))))
 
           (it "prompts O to take their turn"
               (should-contain "O, take your turn"
-                              (with-out-str (print-message (take-turn [0])))))
+                              (with-out-str (print-message (take-turn {:size 3 :board [0]} )))))
 
           (it "splits the board into three"
               (should= [["X" "X" "O"] ["O" "O" "X"] ["X" nil nil]]
