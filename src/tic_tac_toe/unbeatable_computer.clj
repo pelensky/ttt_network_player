@@ -2,6 +2,7 @@
   (:require [tic-tac-toe.board :as ttt-board]))
 
 (declare negamax)
+(def starting-depth 0)
 
 (defn find-computer-marker [board-state]
   (if ( #(even? (count %)) (get board-state :board))
@@ -33,9 +34,9 @@
       (* color (score-scenarios board-state depth marker))
       (do
         (let [scores (score-spaces board-state depth color marker)]
-          (if (= depth 0)
+          (if (= depth starting-depth)
             (best-space board-state scores)
             (top-score board-state scores))))))
 
 (defn choose-space [board-state]
-  (negamax board-state 0  1 (find-computer-marker board-state)))
+  (negamax board-state starting-depth  1 (find-computer-marker board-state)))
