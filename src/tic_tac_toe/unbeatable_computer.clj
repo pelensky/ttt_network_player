@@ -14,14 +14,14 @@
       (/ 1000 depth)
       (/ -1000 depth))))
 
-(defn best-space-and-score [board-state scores marker]
+(defn find-highest-value [board-state scores marker]
  (apply max-key val scores))
 
 (defn best-space [board-state scores marker]
-  (key (best-space-and-score board-state scores marker)))
+  (key (find-highest-value board-state scores marker)))
 
 (defn top-score [board-state scores marker]
-  (val (best-space-and-score board-state scores marker)))
+  (val (find-highest-value board-state scores marker)))
 
 (defn score-spaces [board-state depth color marker]
    (let [available-spaces (ttt-board/find-available-spaces board-state)
