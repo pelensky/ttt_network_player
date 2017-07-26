@@ -27,7 +27,7 @@
 
 (defn score-spaces [board-state depth colour marker]
    (let [available-spaces (ttt-board/find-available-spaces board-state)
-        negamax-score (map #(- (negamax (ttt-board/place-marker % board-state) (inc depth) (* -1 colour)  marker)) available-spaces)]
+        negamax-score (map #(- (negamax (ttt-board/place-marker % board-state) (inc depth) (- colour)  marker)) available-spaces)]
           (zipmap available-spaces negamax-score)))
 
 (defn negamax [board-state depth colour marker]
