@@ -18,7 +18,6 @@
  (apply max-key val (reduce conj {} best-score )))
 
 (defn best-space [board-state best-score marker]
-  (println best-score)
   (key (best-space-and-score board-state best-score marker)))
 
 (defn top-score [board-state best-score marker]
