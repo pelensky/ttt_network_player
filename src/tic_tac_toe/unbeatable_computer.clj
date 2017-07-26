@@ -14,25 +14,25 @@
       (/ 1000 depth)
       (/ -1000 depth))))
 
-(defn best-space-and-score [board-state best-score marker]
- (apply max-key val (reduce conj {} best-score )))
+(defn best-space-and-score [board-state scores marker]
+ (apply max-key val (reduce conj {} scores )))
 
-(defn best-space [board-state best-score marker]
-  (key (best-space-and-score board-state best-score marker)))
+(defn best-space [board-state scores marker]
+  (key (best-space-and-score board-state scores marker)))
 
-(defn top-score [board-state best-score marker]
-  (val (best-space-and-score board-state best-score marker)))
+(defn top-score [board-state scores marker]
+  (val (best-space-and-score board-state scores marker)))
 
-(defn update-best-score [board-state depth color marker]
-   (for [space (ttt-board/find-available-spaces board-state)]
-     (let [negamax-score (* -1 (negamax (ttt-board/place-marker space board-state) (inc depth) (* -1 color)  marker))]
-      { space (max -1000 negamax-score)} )))
+(defn score-spaces [board-state depth color marker]
+   (let [available-spaces (ttt-board/find-available-spaces board-state)
+        negamax-score (map #(- (negamax (ttt-board/place-marker % board-state) (inc depth) (* -1 color)  marker)) available-spaces)]
+          (zipmap available-spaces negamax-score)))
 
 (defn negamax [board-state depth color marker]
     (if (ttt-board/game-over? board-state)
       (* color (score-scenarios board-state depth marker))
       (do
-        (let [scores (update-best-score board-state depth color marker)]
+        (let [scores (score-spaces board-state depth color marker)]
           (if (= depth 0)
             (best-space board-state scores marker)
             (top-score board-state scores marker))))))
