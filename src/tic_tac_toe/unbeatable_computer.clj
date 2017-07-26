@@ -28,16 +28,13 @@
      (let [negamax-score (* -1 (negamax (ttt-board/place-marker space board-state) (inc depth) (* -1 color) best-score marker))]
       (assoc best-score space (max -1000 negamax-score) ))))
 
-(defn check-possible-moves [board-state depth color best-score marker]
-    (let [updated-best-score (update-best-score board-state depth color best-score marker)]
-          ( if (= depth 0)
-            (best-space board-state updated-best-score marker)
-            (top-score board-state updated-best-score marker))))
-
 (defn negamax [board-state depth color best-score marker]
     (if (ttt-board/game-over? board-state)
       (* color (score-scenarios board-state depth marker))
-      (check-possible-moves board-state depth color best-score marker)))
+      (do (let [updated-best-score (update-best-score board-state depth color best-score marker)]
+            (if (= depth 0)
+              (best-space board-state updated-best-score marker)
+              (top-score board-state updated-best-score marker))))))
 
 (defn choose-space [board-state]
   (negamax board-state 0  1 (hash-map) (find-computer-marker board-state)))
