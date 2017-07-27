@@ -1,7 +1,9 @@
 (ns tic-tac-toe.unbeatable-computer
   (:require [tic-tac-toe.board :as ttt-board]))
 
-(declare minimax)
+(declare negamax)
+(def starting-depth 0)
+(def starting-colour 1)
 
 (defn find-computer-marker [board-state]
   (if ( #(even? (count %)) (get board-state :board))
@@ -11,35 +13,31 @@
   (if (ttt-board/game-tied? board-state)
     0
     (if ( ttt-board/game-won-by? marker board-state)
-      (- 10 depth)
-      (- depth 10))))
+      (/ 1000 depth)
+      (/ -1000 depth))))
 
-(defn best-space-and-score [board-state best-score marker]
-  (if (= marker (find-computer-marker board-state))
-    (apply max-key val (reduce conj {} best-score ))
-    (apply min-key val (reduce conj {} best-score ))))
+(defn find-highest-value [board-state scores]
+ (apply max-key val scores))
 
-(defn best-space [board-state best-score marker]
-  (println best-score)
-  (key (best-space-and-score board-state best-score marker)))
+(defn best-space [board-state scores]
+  (key (find-highest-value board-state scores)))
 
-(defn top-score [board-state best-score marker]
-  (val (best-space-and-score board-state best-score marker)))
+(defn top-score [board-state scores]
+  (val (find-highest-value board-state scores)))
 
-(defn update-best-score [board-state depth best-score marker]
-   (for [space (ttt-board/find-available-spaces board-state)]
-      (assoc best-score space (minimax (ttt-board/place-marker space board-state) (inc depth) best-score marker) )))
+(defn score-spaces [board-state depth colour marker]
+   (let [available-spaces (ttt-board/find-available-spaces board-state)
+        negamax-score (map #(- (negamax (ttt-board/place-marker % board-state) (inc depth) (- colour)  marker)) available-spaces)]
+          (zipmap available-spaces negamax-score)))
 
-(defn check-possible-moves [board-state depth best-score marker]
-    (let [updated-best-score (update-best-score board-state depth best-score marker)]
-          ( if (= depth 0)
-            (best-space board-state updated-best-score marker)
-            (top-score board-state updated-best-score marker))))
-
-(defn minimax [board-state depth best-score marker]
+(defn negamax [board-state depth colour marker]
     (if (ttt-board/game-over? board-state)
-      (score-scenarios board-state depth marker)
-      (check-possible-moves board-state depth best-score marker)))
+      (* colour (score-scenarios board-state depth marker))
+      (do
+        (let [scores (score-spaces board-state depth colour marker)]
+          (if (= depth starting-depth)
+            (best-space board-state scores)
+            (top-score board-state scores))))))
 
 (defn choose-space [board-state]
-  (minimax board-state 0 (hash-map) (find-computer-marker board-state)))
+  (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))
