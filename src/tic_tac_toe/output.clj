@@ -61,3 +61,7 @@
 
 (defn print-message [message]
   (println message))
+
+(defn clear-screen []
+  (print (str (char 27) "[2J"))
+  (print (str (char 27) "[;H")))
