@@ -23,8 +23,9 @@
     (output/print-message (output/exiting))))
 
 (defn end-of-game [board-state]
-  (output/print-message (output/format-board board-state))
+  (output/clear-screen)
   (output/print-message (output/game-over board-state))
+  (output/print-message (output/format-board board-state))
   (output/print-message (output/play-again))
   (play-again (input/get-number)))
 
@@ -45,6 +46,7 @@
       (ttt-board/place-marker (player-move board-state player) board-state)))
 
 (defn game-runner [board-state players]
+  (output/clear-screen)
   (output/print-message (output/take-turn board-state))
   (output/print-message (output/format-board board-state))
   (let [updated-board (single-turn board-state players)]
@@ -53,6 +55,7 @@
       (recur updated-board players))))
 
 (defn select-players [players]
+  (output/clear-screen)
   (output/print-message (output/player-type (if (empty? players) "X" "O")))
   (let [updated-players (player-type/select-players players (player-type/select-player (input/get-number)))]
     (if (= max-players (count updated-players ))
@@ -60,5 +63,6 @@
       (recur updated-players))))
 
 (defn play []
+  (output/clear-screen)
   (output/print-message (output/welcome))
   (select-players []))
