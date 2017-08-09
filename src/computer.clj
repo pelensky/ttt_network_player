@@ -6,7 +6,6 @@
 (def starting-depth 0)
 (def starting-colour 1)
 
-
 (defn get-board [board-state]
   (get board-state :board))
 
@@ -89,7 +88,7 @@
           (vec (check-if-spaces-are-available board-state) )))
 
 (defn find-computer-marker [board-state]
-  (if ( #(even? (count %)) (get board-state :board))
+  (if ( #(even? (count %)) (get-board board-state))
     "X" "O"))
 
 (defn score-scenarios [board-state depth marker]
