@@ -16,9 +16,10 @@ To call:
 ```curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size SIZE :board [MOVES]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt```
 
 Full Example: 
-```curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{
-:size 3 :board [0 1 2 3 4 8 5 6]}\"}"
-https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt```
+
+```
+curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size 3 :board [0 1 2 3 4 8 5 6]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt
+```
 
 Examples to test: 
 1. Only available space - `{ :size 3 :board [0 1 2 3 4 8 5 6] }` - returns 7
