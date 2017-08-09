@@ -2,6 +2,7 @@
   (:gen-class
     :methods [^:static [handler [String] Long]]) )
 
-(defn -handler [s]
-  (str "Hello " s "!")
-  7)
+(defn -handler [board-state-string]
+  (let [board-state (read-string board-state-string)]
+  (println board-state)
+  7))
