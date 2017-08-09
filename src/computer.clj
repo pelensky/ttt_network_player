@@ -1,4 +1,10 @@
-(ns tic-tac-toe.board)
+(ns computer
+  (:gen-class
+    :methods [[handler [example.BoardObject] Long]]) )
+
+(declare negamax)
+(def starting-depth 0)
+(def starting-colour 1)
 
 (defn get-board [board-state]
   (get board-state :board))
@@ -80,4 +86,45 @@
 (defn find-available-spaces [board-state]
   (remove nil?
           (vec (check-if-spaces-are-available board-state) )))
+
+(defn find-computer-marker [board-state]
+  (if ( #(even? (count %)) (get-board board-state))
+    "X" "O"))
+
+(defn score-scenarios [board-state depth marker]
+  (if (game-tied? board-state)
+    0
+    (if ( game-won-by? marker board-state)
+      (/ 1000 depth)
+      (/ -1000 depth))))
+
+(defn find-highest-value [board-state scores]
+ (apply max-key val scores))
+
+(defn best-space [board-state scores]
+  (key (find-highest-value board-state scores)))
+
+(defn top-score [board-state scores]
+  (val (find-highest-value board-state scores)))
+
+(defn score-spaces [board-state depth colour marker]
+   (let [available-spaces (find-available-spaces board-state)
+        negamax-score (map #(- (negamax (place-marker % board-state) (inc depth) (- colour) marker)) available-spaces)]
+          (zipmap available-spaces negamax-score)))
+
+(defn negamax [board-state depth colour marker]
+    (if (game-over? board-state)
+      (* colour (score-scenarios board-state depth marker))
+      (do
+        (let [scores (score-spaces board-state depth colour marker)]
+          (if (= depth starting-depth)
+            (best-space board-state scores)
+            (top-score board-state scores))))))
+
+(defn choose-space [board-state]
+  (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))
+
+(defn -handler [this board-object]
+  (let [board-state (read-string (.getBoardState board-object))]
+    (choose-space board-state)))
 
