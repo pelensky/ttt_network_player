@@ -1,6 +1,6 @@
 (ns computer
   (:gen-class
-    :methods [^:static [handler [String] Long]]) )
+    :methods [[handler [example.BoardObject] Long]]) )
 
 (declare negamax)
 (def starting-depth 0)
@@ -128,6 +128,3 @@
   (let [board-state (read-string (.getBoardState board-object))]
     (choose-space board-state)))
 
-(gen-class
-  :name PojoHandler
-  :methods [[handler [example.BoardObject] Long]])
