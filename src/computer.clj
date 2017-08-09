@@ -127,3 +127,15 @@
 (defn -handler [board-state-string]
   (let [board-state (read-string board-state-string)]
     (choose-space board-state)))
+
+; Add POJO handling
+
+(defn -handlepojo [this event]
+  (let [board-state (read-string (.getFirstName event))]
+    (println (type board-state))
+    (println board-state)
+    (choose-space board-state)))
+
+(gen-class
+  :name PojoHandler
+  :methods [[handlepojo [example.MyEvent] Long]])
