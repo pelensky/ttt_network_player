@@ -13,16 +13,18 @@ indexed) ie. On a size 3 board, the top left corner is 0, middle is 4, bottom ri
 
 To call:
 
-$`curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size SIZE :board [MOVES]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt`
+```curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size SIZE :board [MOVES]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt```
 
-ex.`curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{
+Full Example: 
+```curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{
 :size 3 :board [0 1 2 3 4 8 5 6]}\"}"
-https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt` 
+https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt```
 
 Examples to test: 
 1. Only available space - `{ :size 3 :board [0 1 2 3 4 8 5 6] }` - returns 7
 2. Winning space - `{:size 3 :board [0 1 2 3 4 8]}` - returns 6
 3. Blocks a win - `{:size 3 :board [0 1 4]}` - returns 8
+
 [Additional
 examples](https://github.com/pelensky/clojure_ttt/blob/master/spec/tic_tac_toe/unbeatable_computer_spec.clj)
 
