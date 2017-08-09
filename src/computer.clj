@@ -131,7 +131,7 @@
 ; Add POJO handling
 
 (defn -handlepojo [this board-object]
-  (let [board-state (read-string (.getFirstName board-object))]
+  (let [board-state (read-string (.getBoardState board-object))]
     (choose-space board-state)))
 
 (gen-class

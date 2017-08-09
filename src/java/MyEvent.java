@@ -2,13 +2,13 @@ package example;
 
 public class MyEvent {
 
-    private String firstName;
+    private String boardState;
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setBoardState(String boardState) {
+        this.boardState = boardState;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getBoardState() {
+        return boardState;
     }
 }
