@@ -1,6 +1,6 @@
 package example;
 
-public class MyEvent {
+public class BoardObject {
 
     private String boardState;
 

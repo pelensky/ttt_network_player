@@ -136,4 +136,4 @@
 
 (gen-class
   :name PojoHandler
-  :methods [[handlepojo [example.MyEvent] Long]])
+  :methods [[handlepojo [example.BoardObject] Long]])
