@@ -3,6 +3,7 @@
     :methods [^:static [handler [String] Long]]) )
 
 (defn- choose-space [board-state]
+  (println   (get board-state :board))
   (println board-state)
   7)
 
