@@ -130,10 +130,8 @@
 
 ; Add POJO handling
 
-(defn -handlepojo [this event]
-  (let [board-state (read-string (.getFirstName event))]
-    (println (type board-state))
-    (println board-state)
+(defn -handlepojo [this board-object]
+  (let [board-state (read-string (.getFirstName board-object))]
     (choose-space board-state)))
 
 (gen-class
