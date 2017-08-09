@@ -124,16 +124,10 @@
 (defn choose-space [board-state]
   (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))
 
-(defn -handler [board-state-string]
-  (let [board-state (read-string board-state-string)]
-    (choose-space board-state)))
-
-; Add POJO handling
-
-(defn -handlepojo [this board-object]
+(defn -handler [this board-object]
   (let [board-state (read-string (.getBoardState board-object))]
     (choose-space board-state)))
 
 (gen-class
   :name PojoHandler
-  :methods [[handlepojo [example.BoardObject] Long]])
+  :methods [[handler [example.BoardObject] Long]])
