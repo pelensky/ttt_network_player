@@ -13,7 +13,9 @@ indexed) ie. On a size 3 board, the top left corner is 0, middle is 4, bottom ri
 
 To call:
 
-```curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size SIZE :board [MOVES]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt```
+```
+curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size SIZE :board [MOVES]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt
+```
 
 Full Example: 
 
