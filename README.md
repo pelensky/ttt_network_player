@@ -2,7 +2,9 @@
 
 This is an unbeatable computer player that is deployed on an AWS Lambda. 
 
-It requires a board state in the following format:
+This is used in my [Clojure Tic Tac Toe](https://github.com/pelensky/clojure_ttt).
+
+The API requires a board state in the following format:
 ```
 {
   "boardState": "{:size SIZE :board [MOVES]}"
@@ -24,12 +26,11 @@ curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size 
 ```
 
 Examples to test: 
-1. Only available space - `{ :size 3 :board [0 1 2 3 4 8 5 6] }` - returns 7
-2. Winning space - `{:size 3 :board [0 1 2 3 4 8]}` - returns 6
-3. Blocks a win - `{:size 3 :board [0 1 4]}` - returns 8
-
-[Additional
-examples](https://github.com/pelensky/clojure_ttt/blob/master/spec/tic_tac_toe/unbeatable_computer_spec.clj)
+1. X chooses the only available space - `{ :size 3 :board [0 1 2 3 4 8 5 6] }` - returns 7
+2. X wins the game - `{:size 3 :board [0 1 2 3 4 8]}` - returns 6
+3. O wins the game - `{:size 3 :board [0 2 4 8 6]}` - returns 5
+4. X blocks a win - `{:size 3 :board [0 8 6]}` - returns 3
+5. O blocks a win - `{:size 3 :board [0 1 4]}` - returns 8
 
 #### The Rules
 

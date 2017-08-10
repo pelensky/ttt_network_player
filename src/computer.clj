@@ -99,7 +99,7 @@
       (/ -1000 depth))))
 
 (defn find-highest-value [board-state scores]
- (apply max-key val scores))
+  (apply max-key val scores))
 
 (defn best-space [board-state scores]
   (key (find-highest-value board-state scores)))
@@ -108,21 +108,24 @@
   (val (find-highest-value board-state scores)))
 
 (defn score-spaces [board-state depth colour marker]
-   (let [available-spaces (find-available-spaces board-state)
+  (let [available-spaces (find-available-spaces board-state)
         negamax-score (map #(- (negamax (place-marker % board-state) (inc depth) (- colour) marker)) available-spaces)]
-          (zipmap available-spaces negamax-score)))
+    (zipmap available-spaces negamax-score)))
 
 (defn negamax [board-state depth colour marker]
-    (if (game-over? board-state)
-      (* colour (score-scenarios board-state depth marker))
-      (do
-        (let [scores (score-spaces board-state depth colour marker)]
-          (if (= depth starting-depth)
-            (best-space board-state scores)
-            (top-score board-state scores))))))
+  (if (game-over? board-state)
+    (* colour (score-scenarios board-state depth marker))
+    (do
+      (let [scores (score-spaces board-state depth colour marker)]
+        (if (= depth starting-depth)
+          (best-space board-state scores)
+          (top-score board-state scores))))))
 
 (defn choose-space [board-state]
-  (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))
+  (let [board (get-board board-state)]
+    (if (> 2 (count board))
+      (if (.contains board 4) 1 4)
+      (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))))
 
 (defn -handler [this board-object]
   (let [board-state (read-string (.getBoardState board-object))]
