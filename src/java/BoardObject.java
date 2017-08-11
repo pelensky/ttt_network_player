@@ -1,4 +1,4 @@
-package example;
+package networkplayer;
 
 public class BoardObject {
 

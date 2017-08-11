@@ -1,6 +1,6 @@
 (ns computer
   (:gen-class
-    :methods [[handler [example.BoardObject] Long]]) )
+    :methods [[handler [networkplayer.BoardObject] Long]]) )
 
 (declare negamax)
 (def starting-depth 0)
@@ -130,4 +130,3 @@
 (defn -handler [this board-object]
   (let [board-state (read-string (.getBoardState board-object))]
     (choose-space board-state)))
-
