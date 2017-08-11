@@ -5,6 +5,9 @@
 (declare negamax)
 (def starting-depth 0)
 (def starting-colour 1)
+(def number-of-moves-to-check 2)
+(def top-left-space 0)
+(def middle-space 4)
 
 (defn get-board [board-state]
   (get board-state :board))
@@ -115,16 +118,15 @@
 (defn negamax [board-state depth colour marker]
   (if (game-over? board-state)
     (* colour (score-scenarios board-state depth marker))
-    (do
-      (let [scores (score-spaces board-state depth colour marker)]
-        (if (= depth starting-depth)
-          (best-space board-state scores)
-          (top-score board-state scores))))))
+    (let [scores (score-spaces board-state depth colour marker)]
+      (if (= depth starting-depth)
+        (best-space board-state scores)
+        (top-score board-state scores))) ))
 
 (defn choose-space [board-state]
   (let [board (get-board board-state)]
-    (if (> 2 (count board))
-      (if (.contains board 4) 1 4)
+    (if (> number-of-moves-to-check (count board))
+      (if (.contains board middle-space) top-left-space middle-space)
       (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))))
 
 (defn -handler [this board-object]
