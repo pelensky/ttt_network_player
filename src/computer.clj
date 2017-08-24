@@ -1,4 +1,5 @@
 (ns computer
+  (require [clojure.data.json :as json])
   (:gen-class
     :methods [[handler [networkplayer.BoardObject] Long]]) )
 
@@ -130,5 +131,9 @@
       (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))))
 
 (defn -handler [this board-object]
-  (let [board-state (read-string (.getBoardState board-object))]
+  (let [uuid (.getUuid board-object )
+        size (.getSize board-object )
+        board (into [] (java.util.ArrayList. (.getBoard board-object )))
+        board-state (hash-map :uuid uuid :size size :board board )]
     (choose-space board-state)))
+
