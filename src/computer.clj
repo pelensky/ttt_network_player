@@ -131,9 +131,8 @@
       (negamax board-state starting-depth starting-colour (find-computer-marker board-state)))))
 
 (defn -handler [this board-object]
-  (let [uuid (.getUuid board-object )
-        size (.getSize board-object )
+  (let [size (.getSize board-object )
         board (into [] (java.util.ArrayList. (.getBoard board-object )))
-        board-state (hash-map :uuid uuid :size size :board board )]
+        board-state (hash-map :size size :board board )]
     (choose-space board-state)))
 

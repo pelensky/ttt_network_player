@@ -3,17 +3,8 @@ import java.util.List;
 
 public class BoardObject {
 
-    private String uuid;
     private Long size;
     private List<Long> board;
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
 
     public void setSize(Long size) {
       this.size = size;
