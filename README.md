@@ -4,26 +4,9 @@ This is an unbeatable computer player that is deployed on an AWS Lambda.
 
 This is used in my [Clojure Tic Tac Toe](https://github.com/pelensky/clojure_ttt).
 
-The API requires a board state in the following format:
-```
-{
-  "boardState": "{:size SIZE :board [MOVES]}"
-}
-```
-where size is the number of rows, and moves is a vector of sequential moves (0
+The API requires a board state in JSON format with a "uuid", "size", and
+"board", where size is the number of rows, and moves is a vector of sequential moves (0
 indexed) ie. On a size 3 board, the top left corner is 0, middle is 4, bottom right corner is 8.
-
-To call:
-
-```
-curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size SIZE :board [MOVES]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt
-```
-
-Full Example: 
-
-```
-curl -H "Content-Type: application/json" -X POST -d "{\"boardState\": \"{ :size 3 :board [0 1 2 3 4 8 5 6]}\"}" https://xast1bug7h.execute-api.us-east-1.amazonaws.com/ttt
-```
 
 Examples to test: 
 1. X chooses the only available space - `{ :size 3 :board [0 1 2 3 4 8 5 6] }` - returns 7
